@@ -61,7 +61,6 @@ export default function Register() {
   };
 
   return (
-    <div>
       <div className="container-fluid px-md-5">
         <div className="col-lg-6">
           <div className="d-flex justify-content-between align-items-center">
@@ -130,6 +129,5 @@ export default function Register() {
 
         <Image src={noImage} alt="no-image" className={`d-none d-lg-block ${styles.halfBg}`} />
       </div>
-    </div>
   );
 }

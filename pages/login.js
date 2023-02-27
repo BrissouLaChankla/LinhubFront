@@ -50,7 +50,6 @@ export default function Login() {
   };
 
   return (
-    <div>
       <div className="container-fluid px-md-5">
         <div className="col-lg-6">
           <div className="d-flex justify-content-between align-items-center">
@@ -93,14 +92,13 @@ export default function Login() {
               value={signInPassword}
               onChange={handleChange}
             />
-          <div className="text-end">
-            <input onSubmit={() => handleSignIn()} type="submit" className="btn btn-primary" value="Se connecter" />
-          </div>
+            <div className="text-end">
+              <input onSubmit={() => handleSignIn()} type="submit" className="btn btn-primary" value="Se connecter" />
+            </div>
           </form>
         </div>
         <Image src={noImage} className={`d-none d-lg-block ${styles.halfBg}`} alt="no-image" />
 
       </div>
-    </div>
   );
 }

@@ -1,5 +1,6 @@
 import "@/styles/customized.scss";
 import AdminLayout from "@/components/adminlayout";
+import FrontLayout from "@/components/FrontLayout";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
 import user from "@/reducers/user";
@@ -24,7 +25,11 @@ const store = configureStore({
 
 const persistor = persistStore(store);
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, router}) {
+  const getLayout =
+    router.pathname.includes('/admin') ? ((page) => <AdminLayout children={page} />)
+      : ((page) => <FrontLayout children={page} />);
+ 
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
   }, []);
@@ -32,9 +37,7 @@ export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <AdminLayout>
-          <Component {...pageProps} />
-        </AdminLayout>
+        {getLayout(<Component {...pageProps} />, pageProps)}
       </PersistGate>
     </Provider>
   );
