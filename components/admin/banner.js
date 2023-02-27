@@ -41,7 +41,7 @@ function Banner() {
           de ton profil.
           <button
             type="button"
-            class="btn-close"
+            className="btn-close"
             data-bs-dismiss="alert"
             aria-label="Close"
           ></button>

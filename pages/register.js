@@ -6,6 +6,8 @@ import noImage from "../assets/no_image.jpeg";
 import { Google, Linkedin, Github } from "react-bootstrap-icons";
 import Input from "@/components/Input";
 import styles from "@/styles/onboarding.module.scss";
+import Link from "next/link";
+
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -60,63 +62,74 @@ export default function Register() {
 
   return (
     <div>
-      <div className="container-fluid">
-        <h1>Créer mon compte Linhub</h1>
-        <div>
-          <button>
-            <Google />
-            Google
-          </button>
-          <button>
-            <Linkedin />
-            Linkedin
-          </button>
-          <button>
-            <Github />
-            Github
-          </button>
-        </div>
-        <p>ou</p>
-        <div>
-          <Input
-            type="text"
-            label="Nom"
-            required={true}
-            value={signUpFirstname}
-            onChange={handleChange}
-            name="signUpFirstname"
-          />
-          <Input
-            type="text"
-            label="Prénom"
-            required={true}
-            value={signUpLastname}
-            onChange={handleChange}
-            name="signUpLastname"
-          />
-          <Input
-            type="email"
-            label="Email"
-            value={signUpEmail}
-            required={true}
-            onChange={handleChange}
-            name="signUpEmail"
-          />
-          <Input
-            type="password"
-            label="Mot de passe"
-            required={true}
-            value={signUpPassword}
-            onChange={handleChange}
-            name="signUpPassword"
-          />
-        </div>
-        <button onClick={() => handleSignUp()} className="btn btn-primary">
-          S'inscrire
-        </button>
-      </div>
+      <div className="container-fluid px-md-5">
+        <div className="col-lg-6">
+          <div className="d-flex justify-content-between align-items-center">
+            <h1 className="h2 py-3">Créer mon compte Linhub</h1>
+            <Link href="/login">Déjà un compte ?</Link>
+          </div>
 
-      <Image src={noImage} alt="no-image" className={styles.halfBg} />
+          <div>
+            <button>
+              <Google />
+              Google
+            </button>
+            <button>
+              <Linkedin />
+              Linkedin
+            </button>
+            <button>
+              <Github />
+              Github
+            </button>
+          </div>
+
+          <div className="d-flex justify-content-center align-items-center my-3">
+            <div className="border-bottom w-25"></div>
+            <div className="px-3">ou</div>
+            <div className="border-bottom w-25"></div>
+          </div>
+          <form>
+            <Input
+              type="text"
+              label="Nom"
+              required={true}
+              value={signUpFirstname}
+              onChange={handleChange}
+              name="signUpFirstname"
+            />
+            <Input
+              type="text"
+              label="Prénom"
+              required={true}
+              value={signUpLastname}
+              onChange={handleChange}
+              name="signUpLastname"
+            />
+            <Input
+              type="email"
+              label="Email"
+              value={signUpEmail}
+              required={true}
+              onChange={handleChange}
+              name="signUpEmail"
+            />
+            <Input
+              type="password"
+              label="Mot de passe"
+              required={true}
+              value={signUpPassword}
+              onChange={handleChange}
+              name="signUpPassword"
+            />
+          <div className="text-end">
+            <input onSubmit={() => handleSignUp()} type="submit" className="btn btn-primary" value="S'inscrire"/>
+          </div>
+          </form>
+        </div>
+
+        <Image src={noImage} alt="no-image" className={`d-none d-lg-block ${styles.halfBg}`} />
+      </div>
     </div>
   );
 }

@@ -20,7 +20,7 @@ export default function Uikit() {
                 </div>
                 <hr />
                 <div className="d-flex align-items-center gap-4">
-                    <Input type="text" required={true} placeholder="Jean" label="Prénom"></Input>
+                    <Input type="text" required={true} label="Prénom"></Input>
                     <input className="form-check-input" type="checkbox" value="" />
                     <input className="form-check-input" type="radio" value="" />
                 </div>

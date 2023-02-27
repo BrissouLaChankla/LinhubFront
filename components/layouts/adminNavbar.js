@@ -3,7 +3,7 @@ import { PersonCircle } from 'react-bootstrap-icons';
 
 function AdminNavbar() {
     return (
-        <nav className="navbar navbar-expand-md bg-body border-bottom" data-bs-theme="light">
+        <nav className="navbar navbar-expand-md bg-body border-bottom z-3" data-bs-theme="light">
             <div className="container">
             <Link className="nav-link active" href="/">Linhub</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
