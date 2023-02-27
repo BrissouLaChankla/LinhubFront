@@ -1,12 +1,18 @@
-import styles from "@/styles/Input.module.scss"
+import styles from "@/styles/Input.module.scss";
 
-function Input(props) {
-    return (
-        <div className={styles.inputGroup}>
-            <input type={props.type} required={props.required} />
-            <label htmlFor={props.label}>{props.label}</label>
-        </div>
-    )
+function Input({ type, value, required, onChange, label, name }) {
+  return (
+    <div className={styles.inputGroup}>
+      <input
+        type={type}
+        required={required}
+        value={value}
+        onChange={onChange}
+        name={name}
+      />
+      <label htmlFor={label}>{label}</label>
+    </div>
+  );
 }
 
 export default Input;
