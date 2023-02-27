@@ -24,7 +24,9 @@ export default function Login() {
     console.log(inputValue);
   };
 
-  const handleSignIn = () => {
+  const handleSignIn = (e) => {
+    e.preventDefault();
+
     fetch("http://localhost:3000/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -35,6 +37,7 @@ export default function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         data.result &&
           dispatch(
             login({
@@ -76,7 +79,7 @@ export default function Login() {
             <div className="px-3">ou</div>
             <div className="border-bottom w-25"></div>
           </div>
-          <form action="">
+          <form onSubmit={handleSignIn}>
             <Input
               type="email"
               label="Email"
@@ -93,13 +96,23 @@ export default function Login() {
               value={signInPassword}
               onChange={handleChange}
             />
-          <div className="text-end">
-            <input onSubmit={() => handleSignIn()} type="submit" className="btn btn-primary" value="Se connecter" />
-          </div>
+            <div className="text-end">
+              <button
+                // onSubmit={() => handleSignIn()}
+                type="submit"
+                className="btn btn-primary"
+              >
+                Se connecter
+              </button>
+            </div>
           </form>
+          {/* <button onClick={() => handleSignIn()} /> */}
         </div>
-        <Image src={noImage} className={`d-none d-lg-block ${styles.halfBg}`} alt="no-image" />
-
+        <Image
+          src={noImage}
+          className={`d-none d-lg-block ${styles.halfBg}`}
+          alt="no-image"
+        />
       </div>
     </div>
   );

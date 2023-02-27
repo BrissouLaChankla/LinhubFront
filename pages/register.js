@@ -8,7 +8,6 @@ import Input from "@/components/Input";
 import styles from "@/styles/onboarding.module.scss";
 import Link from "next/link";
 
-
 export default function Register() {
   const dispatch = useDispatch();
 
@@ -30,7 +29,9 @@ export default function Register() {
     console.log(inputValue);
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = (e) => {
+    e.preventDefault();
+
     fetch("http://localhost:3000/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -89,7 +90,7 @@ export default function Register() {
             <div className="px-3">ou</div>
             <div className="border-bottom w-25"></div>
           </div>
-          <form>
+          <form onSubmit={handleSignUp}>
             <Input
               type="text"
               label="Nom"
@@ -122,13 +123,19 @@ export default function Register() {
               onChange={handleChange}
               name="signUpPassword"
             />
-          <div className="text-end">
-            <input onSubmit={() => handleSignUp()} type="submit" className="btn btn-primary" value="S'inscrire"/>
-          </div>
+            <div className="text-end">
+              <button type="submit" className="btn btn-primary">
+                S'inscrire
+              </button>
+            </div>
           </form>
         </div>
 
-        <Image src={noImage} alt="no-image" className={`d-none d-lg-block ${styles.halfBg}`} />
+        <Image
+          src={noImage}
+          alt="no-image"
+          className={`d-none d-lg-block ${styles.halfBg}`}
+        />
       </div>
     </div>
   );
