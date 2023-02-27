@@ -1,34 +1,40 @@
 // Ici on customize et overide les variables que vous trouverez dans node_modules\bootstrap\scss\_variables.scss
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
 
 :root {
-    --primary: #D36135;
-    --secondary: #263238;
-    --light: #E8E8E8;
+  --primary: #d36135;
+  --secondary: #263238;
+  --light: #e8e8e8;
 }
 
-$primary:#D36135;
-$secondary:#263238;
-$light:#E8E8E8;
+$primary: #d36135;
+$secondary: #263238;
+$light: #e8e8e8;
 
 // Text
-$font-family-base:'Noto Sans', sans-serif;
+$font-family-base: "Noto Sans", sans-serif;
 $font-size-base: 1rem !default;
 
-$h1-font-size:  $font-size-base * 3.5;
-$h2-font-size:  $font-size-base * 1.75;
-$h3-font-size:  $font-size-base * 1.25;
-$h4-font-size:  $font-size-base;
-$headings-color:$secondary;
-$headings-font-weight:700;
+$h1-font-size: $font-size-base * 3.5;
+$h2-font-size: $font-size-base * 1.75;
+$h3-font-size: $font-size-base * 1.25;
+$h4-font-size: $font-size-base;
+$headings-color: $secondary;
+$headings-font-weight: 700;
 
-
-// Buttons 
+// Buttons
 $min-contrast-ratio: 3.5;
-$btn-padding-x:3rem;
-$btn-padding-y:.5rem;
-$btn-border-radius:50px;
+$btn-padding-x: 3rem;
+$btn-padding-y: 0.5rem;
+$btn-border-radius: 50px;
 
 // Inputs
+$primary: #d36135;
+$secondary: #263238;
+$light: #f5f4f8;
+
+$alert-primary: #d36135;
+$alert-secondary: #263238;
+$alert-light: #f5f4f8;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
