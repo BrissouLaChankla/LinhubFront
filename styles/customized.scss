@@ -1,6 +1,10 @@
 // Ici on customize et overide les variables que vous trouverez dans node_modules\bootstrap\scss\_variables.scss
-$primary:#D36135;
-$secondary:#263238;
-$light:#F5F4F8;
+$primary: #d36135;
+$secondary: #263238;
+$light: #f5f4f8;
+
+$alert-primary: #d36135;
+$alert-secondary: #263238;
+$alert-light: #f5f4f8;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
