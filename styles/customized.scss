@@ -1,6 +1,34 @@
 // Ici on customize et overide les variables que vous trouverez dans node_modules\bootstrap\scss\_variables.scss
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+:root {
+    --primary: #D36135;
+    --secondary: #263238;
+    --light: #E8E8E8;
+}
+
 $primary:#D36135;
 $secondary:#263238;
-$light:#F5F4F8;
+$light:#E8E8E8;
+
+// Text
+$font-family-base:'Noto Sans', sans-serif;
+$font-size-base: 1rem !default;
+
+$h1-font-size:  $font-size-base * 3.5;
+$h2-font-size:  $font-size-base * 1.75;
+$h3-font-size:  $font-size-base * 1.25;
+$h4-font-size:  $font-size-base;
+$headings-color:$secondary;
+$headings-font-weight:700;
+
+
+// Buttons 
+$min-contrast-ratio: 3.5;
+$btn-padding-x:3rem;
+$btn-padding-y:.5rem;
+$btn-border-radius:50px;
+
+// Inputs
 
 @import "../node_modules/bootstrap/scss/bootstrap";
