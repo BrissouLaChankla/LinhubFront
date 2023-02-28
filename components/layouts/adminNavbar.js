@@ -2,11 +2,14 @@ import Link from "next/link";
 import { PersonCircle } from "react-bootstrap-icons";
 import { logout } from "../../reducers/user";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 function AdminNavbar() {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleLogout = () => {
+    router.push("/");
     dispatch(logout());
   };
   return (
