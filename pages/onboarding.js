@@ -19,7 +19,7 @@ export default function Onboarding() {
               <div className="fs-1">👨‍💻</div>
               <div className="ps-4">
                 <h3>Le dev</h3>
-                <span>je créer mon profil</span>
+                <span>je crée mon profil</span>
               </div>
             </div>
             <ChevronRight />
