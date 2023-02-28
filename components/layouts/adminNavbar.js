@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PersonCircle } from "react-bootstrap-icons";
+import { PersonCircle, FileEarmarkPerson } from "react-bootstrap-icons";
 import { logout } from "../../reducers/user";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
@@ -36,9 +36,13 @@ function AdminNavbar() {
           className="collapse navbar-collapse justify-content-end me-4"
           id="navbarNavAltMarkup"
         >
-          <div className="navbar-nav">
+          <div className="navbar-nav d-flex align-items-center">
+            <Link className="nav-link d-flex align-items-center gap-2" href="/admin/general">
+              <FileEarmarkPerson />
+              Info. Générales
+            </Link> |
             <Link className="nav-link" href="/admin">
-              Admin
+              Dashboard
             </Link>
           </div>
         </div>
