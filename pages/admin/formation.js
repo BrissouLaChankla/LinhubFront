@@ -38,7 +38,14 @@ export default function Formation() {
             data-bs-target="#modalUpdate"
             // data-bs-trigger="#modalUpdate"
           >
-            <div className="card-header">Ma formation</div>
+            <div className="card-header ms-4">
+              Ma formation
+              <button
+                type="button"
+                className="btn-close btn-close-white float-end"
+                aria-label="Close"
+              ></button>
+            </div>
             <div className="card-body">
               <h5 className="card-title">La Capsule</h5>
             </div>
@@ -50,7 +57,14 @@ export default function Formation() {
             data-bs-toggle="modal"
             data-bs-target="#modalUpdate"
           >
-            <div className="card-header">Ma formation</div>
+            <div className="card-header ms-4">
+              Ma formation
+              <button
+                type="button"
+                className="btn-close btn-close-white float-end"
+                aria-label="Close"
+              ></button>
+            </div>
             <div className="card-body">
               <h5 className="card-title">La Capsule</h5>
             </div>
@@ -61,7 +75,14 @@ export default function Formation() {
             data-bs-toggle="modal"
             data-bs-target="#modalUpdate"
           >
-            <div className="card-header">Ma formation</div>
+            <div className="card-header ms-4 ">
+              Ma formation
+              <button
+                type="button"
+                className="btn-close btn-close-white float-end "
+                aria-label="Close"
+              ></button>
+            </div>
             <div className="card-body">
               <h5 className="card-title">La Capsule</h5>
             </div>
