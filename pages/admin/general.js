@@ -5,6 +5,18 @@ import defaultProfile from "@/assets/default/profile.jpg";
 import { PencilFill } from "react-bootstrap-icons";
 import { useState, useRef } from "react";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
 
 export default function GeneralInfos() {
   const user = useSelector((state) => state.user.value);
@@ -13,10 +25,11 @@ export default function GeneralInfos() {
   const [bannerPicture, setBannerPicture] = useState(defaultBanner)
   const profileField = useRef(null);
   const bannerField = useRef(null);
-  
   const firstname = useRef(null);
   const lastname = useRef(null);
   const address = useRef(null);
+  const birthday = useRef(null);
+  const experience = useRef(null);
   const headline = useRef(null);
   const description = useRef(null);
   const hasAcceptedToBeShown = useRef(null);
@@ -33,34 +46,46 @@ export default function GeneralInfos() {
   const editGeneral = (e) => {
     e.preventDefault();
     const data = {
-      firstname:firstname.current.value,
-      lastname:lastname.current.value,
-      address:address.current.value,
-      headline:headline.current.value,
-      description:description.current.value,
-      hasAcceptedToBeShown:hasAcceptedToBeShown.current.value,
+      firstname: firstname.current.value,
+      lastname: lastname.current.value,
+      address: address.current.value,
+      experience: experience.current.value,
+      birthday: birthday.current.value,
+      headline: headline.current.value,
+      description: description.current.value,
+      hasAcceptedToBeShown: hasAcceptedToBeShown.current.value,
     }
     const formData = new FormData();
-    formData.append('profilePicture', profilePicture);
-    formData.append('bannerPicture', bannerPicture);
-    formData.append('data', data)
+    formData.append('profileBannerPictures', profileField.current.files[0]);
+    formData.append('profileBannerPictures', bannerField.current.files[0]);
+    formData.append('data', JSON.stringify(data))
 
-    console.log(formData);
-    fetch("http://localhost:3000/generalInfo/update/"+user.token, {
+    fetch("http://localhost:3000/generalInfo/update/" + user.token, {
       method: "POST",
       body: formData,
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.result) {
+          Toast.fire({
+            icon: 'success',
+            title: data.res
+          });
+        } else {
+          Toast.fire({
+            icon: 'error',
+            title: "Une erreur s'est produite 🤔"
+          });
+        }
         console.log(data);
       });
   };
 
   return (
     <>
-      <input type="file" ref={profileField} id="img" name="profilePicture" accept="image/*" className="d-none" onChange={(e) => handleChangeProfile(e)} />
-      <input type="file" ref={bannerField} id="img" name="backgroundPicture" accept="image/*" className="d-none" onChange={(e) => handleChangeBanner(e)} />
-      <form onSubmit={editGeneral} className="container mb-5">
+      <form onSubmit={editGeneral} className="container mb-5" encType="multipart/form-data">
+        <input type="file" ref={profileField} id="profilePicture" name="profilePicture" accept="image/*" className="d-none" onChange={(e) => handleChangeProfile(e)} />
+        <input type="file" ref={bannerField} id="backgroundPicture" name="backgroundPicture" accept="image/*" className="d-none" onChange={(e) => handleChangeBanner(e)} />
         <div className="d-flex justify-content-center">
 
           <div className="position-relative">
@@ -104,15 +129,26 @@ export default function GeneralInfos() {
           </div>
           <div className="d-flex gap-4 flex-wrap mt-3">
             <div className="mb-3 flex-grow-1 ">
-              <label htmlFor="address" className="form-label">Localisation</label>
+              <label htmlFor="birthday" className="form-label">Date de naissance</label>
+              <input type="date" className="form-control" ref={birthday} id="birthday" />
+            </div>
+            <div className="mb-3 flex-grow-1 ">
+              <label htmlFor="address" className="form-label">Adresse</label>
               <input type="text" className="form-control" ref={address} id="address" />
             </div>
           </div>
-          <div className="mb-3">
-            <label htmlFor="headline" className="form-label">Headline</label>
-            <input type="text" className="form-control" ref={headline} id="headline" />
+          <div className="d-flex gap-4 flex-wrap mt-3">
+            <div className="mb-3">
+              <label htmlFor="experience" className="form-label">Années d'expériences</label>
+              <input type="number" className="form-control" ref={experience} id="experience" />
+            </div>
+            <div className="mb-3 flex-grow-1">
+              <label htmlFor="headline" className="form-label">Headline</label>
+              <input type="text" className="form-control" ref={headline} id="headline" />
+            </div>
           </div>
-          <div className="mb-3">
+
+          <div className="mb-4">
             <label htmlFor="description" className="form-label">Description</label>
             <textarea className="form-control" id="description" ref={description} rows="3"></textarea>
           </div>
