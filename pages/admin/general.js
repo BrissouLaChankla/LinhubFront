@@ -46,7 +46,7 @@ export default function GeneralInfos() {
     formData.append('data', data)
 
     console.log(formData);
-    fetch("http://localhost:3000/update/"+user.token, {
+    fetch("http://localhost:3000/generalInfo/update/"+user.token, {
       method: "POST",
       body: formData,
     })
