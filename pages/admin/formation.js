@@ -1,8 +1,55 @@
 import LargeModalRegister from "@/components/admin/largeModalRegister";
 import LargeModalUpdate from "@/components/admin/largeModalUpdate";
+import {
+  loadFormation,
+  addFormation,
+  deleteFormation,
+} from "@/reducers/formation";
 import { useEffect } from "react";
+import { useState, useRef } from "react";
+
+const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function Formation() {
+  // const handleNewFormation = () => {
+  //   fetch(`${BACKEND_ADDRESS}/create/token`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({
+  //       schoolName: req.body.schoolName,
+  //       degreeName: req.body.degreeName,
+  //       fieldOfStudyName: req.body.fieldOfStudyName,
+  //       startDate: req.body.startDate,
+  //       endDate: req.body.endDate,
+  //       description: req.body.description,
+  //     }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.result) {
+  //         dispatch(addFormation(token));
+  //       }
+  //     });
+  // };
+
+  const handleFormation = () => {
+    fetch(`${BACKEND_ADDRESS}/token`)
+      .then((response) => response.json())
+      .then((data) => {
+        data.result;
+      });
+  };
+
+  const handleDelete = () => {
+    fetch(`${BACKEND_ADDRESS}/education/${educationId}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        data.result && dispatch(deleteFormation(educationId));
+      });
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -44,6 +91,7 @@ export default function Formation() {
                 type="button"
                 className="btn-close btn-close-white float-end"
                 aria-label="Close"
+                onClick={() => handleDelete()}
               ></button>
             </div>
             <div className="card-body">
@@ -63,6 +111,7 @@ export default function Formation() {
                 type="button"
                 className="btn-close btn-close-white float-end"
                 aria-label="Close"
+                onClick={() => handleDelete()}
               ></button>
             </div>
             <div className="card-body">
@@ -81,6 +130,7 @@ export default function Formation() {
                 type="button"
                 className="btn-close btn-close-white float-end "
                 aria-label="Close"
+                onClick={() => handleDelete()}
               ></button>
             </div>
             <div className="card-body">

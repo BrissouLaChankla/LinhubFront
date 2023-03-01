@@ -1,6 +1,6 @@
 import { login } from "@/reducers/user";
 import Image from "next/image";
-import noImage from "../assets/no_image.jpeg";
+import noImage from "../public/no_image.jpeg";
 import { useState } from "react";
 import { Google, Linkedin, Github } from "react-bootstrap-icons";
 import Input from "@/components/Input";

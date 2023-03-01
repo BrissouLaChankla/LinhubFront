@@ -7,7 +7,7 @@ export default function LargeModalUpdate() {
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog modal-xl">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
@@ -31,7 +31,16 @@ export default function LargeModalUpdate() {
               />
             </div>
             <div>
-              Description
+              Diplôme
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+            <div>
+              Domaine d’études
               <input
                 type="text"
                 className="form-control"
@@ -50,6 +59,24 @@ export default function LargeModalUpdate() {
             </div>
             <div>
               date de fin
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+            <div>
+              Résultat obtenu
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+            <div>
+              Descriptif
               <input
                 type="text"
                 className="form-control"
