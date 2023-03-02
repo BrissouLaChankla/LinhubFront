@@ -1,10 +1,12 @@
 import Image from "next/image";
 import styles from '@/styles/imgInputs.module.scss'
-import defaultBanner from "@/assets/default/banner.jpg";
-import defaultProfile from "@/assets/default/profile.jpg";
+import defaultBanner from "@/public/default/banner.jpg"
+import defaultProfile from "@/public/default/profile.jpg"
 import { PencilFill } from "react-bootstrap-icons";
 import { useState, useRef } from "react";
 import { useSelector } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
+
 import Swal from "sweetalert2";
 const Toast = Swal.mixin({
   toast: true,
@@ -18,11 +20,14 @@ const Toast = Swal.mixin({
   }
 })
 
+
 export default function GeneralInfos() {
   const user = useSelector((state) => state.user.value);
 
   const [profilePicture, setProfilePicture] = useState(defaultProfile)
   const [bannerPicture, setBannerPicture] = useState(defaultBanner)
+  const [loading, setLoading] = useState(false);
+
   const profileField = useRef(null);
   const bannerField = useRef(null);
   const firstname = useRef(null);
@@ -34,6 +39,19 @@ export default function GeneralInfos() {
   const description = useRef(null);
   const hasAcceptedToBeShown = useRef(null);
 
+  const { isLoading, error, data } = useQuery({
+    queryKey: ['generalInfos'],
+    queryFn: () =>
+      fetch('http://localhost:3000/generalInfo/' + user.token).then(
+        (res) => res.json(),
+      ),
+  })
+
+  if (isLoading) return 'Chargement...'
+  if (error) return 'Aïe, il y a eu un pb: ' + error.message
+
+
+
   // Change the src of profile/banner images with uploaded img
   const handleChangeProfile = e => {
     setProfilePicture(URL.createObjectURL(e.target.files[0]))
@@ -42,9 +60,14 @@ export default function GeneralInfos() {
     setBannerPicture(URL.createObjectURL(e.target.files[0]))
   }
 
+  console.log(data);
+
+
   // Submit 
   const editGeneral = (e) => {
     e.preventDefault();
+    setLoading(true);
+
     const data = {
       firstname: firstname.current.value,
       lastname: lastname.current.value,
@@ -78,6 +101,7 @@ export default function GeneralInfos() {
           });
         }
         console.log(data);
+        setLoading(false);
       });
   };
 
@@ -85,13 +109,14 @@ export default function GeneralInfos() {
     <>
       <form onSubmit={editGeneral} className="container mb-5" encType="multipart/form-data">
         <input type="file" ref={profileField} id="profilePicture" name="profilePicture" accept="image/*" className="d-none" onChange={(e) => handleChangeProfile(e)} />
-        <input type="file" ref={bannerField} id="backgroundPicture" name="backgroundPicture" accept="image/*" className="d-none" onChange={(e) => handleChangeBanner(e)} />
+        <input type="file" ref={bannerField} id="bannerPicture" name="bannerPicture" accept="image/*" className="d-none" onChange={(e) => handleChangeBanner(e)} />
         <div className="d-flex justify-content-center">
 
           <div className="position-relative">
             <div className={`position-relative overflow-hidden ${styles.editable}`}>
+            
               <Image
-                src={bannerPicture}
+                src={ data.res.general.bannerPicture ? data.res.general.bannerPicture : bannerPicture}
                 className="object-fit-cover rounded img-fluid"
                 onClick={() => bannerField.current.click()}
                 alt="Image de Background"
@@ -104,7 +129,7 @@ export default function GeneralInfos() {
             <div className="position-absolute bottom-0 start-0" style={{ transform: 'translate(30px, 30px)' }}>
               <div className={`position-relative ${styles.editable}`}>
                 <Image
-                  src={profilePicture}
+                  src={ data.res.general.profilePicture ? data.res.general.profilePicture : profilePicture}
                   className={`img-thumbnail rounded-circle  `}
                   style={{ width: 150, height: 150 }}
                   onClick={() => profileField.current.click()}
@@ -120,37 +145,37 @@ export default function GeneralInfos() {
           <div className="d-flex gap-4 flex-wrap mt-3">
             <div className="flex-grow-1 ">
               <label htmlFor="firstname" className="form-label">Prénom</label>
-              <input type="text" className="form-control" ref={firstname} id="firstname" />
+              <input type="text" className="form-control" ref={firstname} id="firstname" defaultValue={data.res.general.firstname} />
             </div>
             <div className="flex-grow-1 ">
               <label htmlFor="lastname" className="form-label">Nom</label>
-              <input type="text" className="form-control" ref={lastname} id="lastname" />
+              <input type="text" className="form-control" ref={lastname} id="lastname" defaultValue={data.res.general.lastname} />
             </div>
           </div>
           <div className="d-flex gap-4 flex-wrap mt-3">
             <div className="mb-3 flex-grow-1 ">
               <label htmlFor="birthday" className="form-label">Date de naissance</label>
-              <input type="date" className="form-control" ref={birthday} id="birthday" />
+              <input type="date" className="form-control" ref={birthday} id="birthday" defaultValue={data.res.general.birthday} />
             </div>
             <div className="mb-3 flex-grow-1 ">
               <label htmlFor="address" className="form-label">Adresse</label>
-              <input type="text" className="form-control" ref={address} id="address" />
+              <input type="text" className="form-control" ref={address} id="address" defaultValue={data.res.general.address} />
             </div>
           </div>
           <div className="d-flex gap-4 flex-wrap mt-3">
             <div className="mb-3">
               <label htmlFor="experience" className="form-label">Années d'expériences</label>
-              <input type="number" className="form-control" ref={experience} id="experience" />
+              <input type="number" className="form-control" ref={experience} id="experience" defaultValue={data.res.general.experience} />
             </div>
             <div className="mb-3 flex-grow-1">
               <label htmlFor="headline" className="form-label">Headline</label>
-              <input type="text" className="form-control" ref={headline} id="headline" />
+              <input type="text" className="form-control" ref={headline} id="headline" defaultValue={data.res.general.headline} />
             </div>
           </div>
 
           <div className="mb-4">
             <label htmlFor="description" className="form-label">Description</label>
-            <textarea className="form-control" id="description" ref={description} rows="3"></textarea>
+            <textarea className="form-control" id="description" ref={description} defaultValue={data.res.general.description} rows="3" />
           </div>
           <div className="d-flex justify-content-between">
             <div>
@@ -159,7 +184,16 @@ export default function GeneralInfos() {
                 J'accepte être mis en avant par Linhub
               </label>
             </div>
-            <input type="submit" value="Enregistrer" className="btn btn-primary" />
+              {
+                loading ?
+                  <button type="submit" className="btn btn-primary disabled">
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  </button>
+                  :
+                  <button type="submit" className="btn btn-primary">
+                        <span>Enregistrer</span>
+                  </button>
+              }
           </div>
         </div>
       </form>

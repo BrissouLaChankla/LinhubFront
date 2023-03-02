@@ -8,6 +8,9 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
+import { QueryClient, QueryClientProvider, useQuery} from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 const reducers = combineReducers({ user });
 const persistConfig = {
@@ -37,7 +40,9 @@ export default function App({ Component, pageProps, router}) {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        {getLayout(<Component {...pageProps} />, pageProps)}
+        <QueryClientProvider client={queryClient}>
+          {getLayout(<Component {...pageProps} />, pageProps)}
+        </QueryClientProvider>
       </PersistGate>
     </Provider>
   );
