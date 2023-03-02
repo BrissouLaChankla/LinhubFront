@@ -1,6 +1,4 @@
-import DraggableComponent from "@/components/DraggableComponent";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import TabsNavSkills from "../components/TabsNavSkills";
 
 export default function OnboardSkill() {
   return (
@@ -9,9 +7,7 @@ export default function OnboardSkill() {
         <h3>Super ! vous êtes un Développeur(rajouter le props)</h3>
         <p>Quelles sont vos technos de prédilections ?</p>
       </div>
-      <DndProvider backend={HTML5Backend}>
-        <DraggableComponent></DraggableComponent>
-      </DndProvider>
+      <TabsNavSkills></TabsNavSkills>
     </div>
   );
 }
