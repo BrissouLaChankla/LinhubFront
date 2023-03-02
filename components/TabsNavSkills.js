@@ -548,6 +548,11 @@ export default function TabsNavSkills() {
       url: symfony,
       categorie: "Framework",
     },
+    {
+      name: "Quasar",
+      url: quasar,
+      categorie: "Framework",
+    },
   ];
 
   const logos = allSkills.map((logo, i) => {
@@ -561,45 +566,149 @@ export default function TabsNavSkills() {
     );
   });
 
+  const programmingLanguages = allSkills
+    .filter((logo) => {
+      return logo.categorie === "Programming Languages";
+    })
+    .map((logo, i) => {
+      return (
+        <LogoSkill
+          key={i}
+          url={logo.url}
+          name={logo.name}
+          categorie={logo.categorie}
+        />
+      );
+    });
+
+  const frontend = allSkills
+    .filter((logo) => {
+      return logo.categorie === "Frontend";
+    })
+    .map((logo, i) => {
+      return (
+        <LogoSkill
+          key={i}
+          url={logo.url}
+          name={logo.name}
+          categorie={logo.categorie}
+        />
+      );
+    });
+
+  const backend = allSkills
+    .filter((logo) => {
+      return logo.categorie === "Backend";
+    })
+    .map((logo, i) => {
+      return (
+        <LogoSkill
+          key={i}
+          url={logo.url}
+          name={logo.name}
+          categorie={logo.categorie}
+        />
+      );
+    });
+
+  const devops = allSkills
+    .filter((logo) => {
+      return logo.categorie === "DevOps";
+    })
+    .map((logo, i) => {
+      return (
+        <LogoSkill
+          key={i}
+          url={logo.url}
+          name={logo.name}
+          categorie={logo.categorie}
+        />
+      );
+    });
+
+  const mobileapp = allSkills
+    .filter((logo) => {
+      return logo.categorie === "Mobile";
+    })
+    .map((logo, i) => {
+      return (
+        <LogoSkill
+          key={i}
+          url={logo.url}
+          name={logo.name}
+          categorie={logo.categorie}
+        />
+      );
+    });
+
+  const database = allSkills
+    .filter((logo) => {
+      return logo.categorie === "Database";
+    })
+    .map((logo, i) => {
+      return (
+        <LogoSkill
+          key={i}
+          url={logo.url}
+          name={logo.name}
+          categorie={logo.categorie}
+        />
+      );
+    });
+
+  const framework = allSkills
+    .filter((logo) => {
+      return logo.categorie === "Framework";
+    })
+    .map((logo, i) => {
+      return (
+        <LogoSkill
+          key={i}
+          url={logo.url}
+          name={logo.name}
+          categorie={logo.categorie}
+        />
+      );
+    });
+
   const tabs = [
     {
       id: "1",
       tabTitle: "Programming Languages",
-      content: logos,
+      content: programmingLanguages,
     },
     {
       id: "2",
       tabTitle: "Frontend",
-
-      content: logos,
+      content: frontend,
     },
     {
       id: "3",
       tabTitle: "Backend",
-
-      content: logos,
+      content: backend,
     },
     {
       id: "4",
       tabTitle: "DevOps",
-
-      content: logos,
+      content: devops,
     },
     {
       id: "5",
       tabTitle: "Mobile App",
-
-      content: logos,
+      content: mobileapp,
     },
     {
       id: "6",
       tabTitle: "Database",
+      content: database,
     },
     {
       id: "7",
       tabTitle: "Framework",
+      content: framework,
     },
   ];
+
   const handleTabClick = (e) => {
     setCurrentTab(e.target.id);
   };
