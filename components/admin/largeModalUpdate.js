@@ -1,17 +1,24 @@
-export default function LargeModalUpdate() {
+import FormationFormUpdate from "../forms/FormationFormUpdate";
+import { useEffect, useState } from "react";
+
+export default function LargeModalUpdate(props) {
+  const [formationId, setFormationId] = useState(undefined);
+
+  useEffect(() => setFormationId(props.formation._id), [props.formation._id]);
+
   return (
     <div
       className="modal fade"
       id="modalUpdate"
       tabIndex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="modalUpdate"
       aria-hidden="true"
     >
       <div className="modal-dialog modal-xl">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
-              Ma formation
+              Editer : {props.formation.schoolName}
             </h5>
             <button
               type="button"
@@ -21,81 +28,7 @@ export default function LargeModalUpdate() {
             ></button>
           </div>
           <div className="modal-body">
-            <div>
-              Nom de la formation
-              <input
-                type="text"
-                className="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-            </div>
-            <div>
-              Diplôme
-              <input
-                type="text"
-                className="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-            </div>
-            <div>
-              Domaine d’études
-              <input
-                type="text"
-                className="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-            </div>
-            <div>
-              Date de début
-              <input
-                type="text"
-                className="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-            </div>
-            <div>
-              date de fin
-              <input
-                type="text"
-                className="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-            </div>
-            <div>
-              Résultat obtenu
-              <input
-                type="text"
-                className="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-            </div>
-            <div>
-              Descriptif
-              <input
-                type="text"
-                className="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-            </div>
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Fermer
-            </button>
-            <button type="button" className="btn btn-primary">
-              Mettre à jour
-            </button>
+            {formationId && <FormationFormUpdate id={formationId} />}
           </div>
         </div>
       </div>

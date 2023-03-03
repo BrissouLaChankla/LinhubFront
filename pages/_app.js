@@ -8,7 +8,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
-import { QueryClient, QueryClientProvider, useQuery} from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
@@ -28,11 +28,11 @@ const store = configureStore({
 
 const persistor = persistStore(store);
 
-export default function App({ Component, pageProps, router}) {
-  const getLayout =
-    router.pathname.includes('/admin') ? ((page) => <AdminLayout children={page} />)
-      : ((page) => <FrontLayout children={page} />);
- 
+export default function App({ Component, pageProps, router }) {
+  const getLayout = router.pathname.includes("/admin")
+    ? (page) => <AdminLayout children={page} />
+    : (page) => <FrontLayout children={page} />;
+
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
   }, []);
