@@ -68,10 +68,10 @@ export default function Formation() {
   // };
 
   const myFormations = data.data.map((e, i) => (
-    <div className="col-12 col-lg-3 d-flex flex-fill flex-column card text-white bg-secondary mb-2 mx-2 btn">
+    <div className="col-12 row-cols-1 flex-fill col-lg-3 d-flex flex-column card text-white bg-secondary mb-3 mx-2 btn">
       <button
         type="button"
-        className="btn-close btn-close-white justify-content-end"
+        className="btn-close btn-close-white justify-content-end flex-fill "
         aria-label="Close"
         onClick={() => {
           console.log("click");
@@ -80,7 +80,7 @@ export default function Formation() {
       />
       <div
         key={i}
-        // className=" "
+        className=" ms-3 "
         type="submit"
         data-bs-toggle="modal"
         data-bs-target="#modalUpdate"
@@ -89,6 +89,7 @@ export default function Formation() {
         <div className="card-header ms-4 ">Ma formation</div>
         <div className="card-body">
           <h5 className="card-title">{e.schoolName}</h5>
+          <h5 className="card-title">{e.degreeName}</h5>
         </div>
       </div>
     </div>
