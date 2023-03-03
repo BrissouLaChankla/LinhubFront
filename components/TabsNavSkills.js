@@ -716,6 +716,7 @@ export default function TabsNavSkills() {
   const tabsOnglets = tabs.map((tab, i) => {
     return (
       <button
+        className="border border-primary rounded-md px-4 py-2"
         key={i}
         id={tab.id}
         disabled={currentTab === `${tab.id}`}
@@ -729,18 +730,14 @@ export default function TabsNavSkills() {
   const tabContent = tabs.map((tab, i) => {
     return (
       <div key={i}>
-        {currentTab === `${tab.id}` && (
-          <div>
-            <p>{tab.content}</p>
-          </div>
-        )}
+        {currentTab === `${tab.id}` && <div>{tab.content}</div>}
       </div>
     );
   });
 
   return (
-    <div className="container">
-      <div className="tabs">{tabsOnglets}</div>
+    <div className="w-80 ">
+      <div className="d-flex justify-content-between">{tabsOnglets}</div>
       {tabContent}
     </div>
   );

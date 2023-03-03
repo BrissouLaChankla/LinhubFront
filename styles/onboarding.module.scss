@@ -5,3 +5,14 @@
   right: 0;
   top: 0;
 }
+
+.githubInput {
+  img {
+    transition: all 0.3s ease;
+  }
+  &:hover {
+    img {
+      filter: invert(1);
+    }
+  }
+}
