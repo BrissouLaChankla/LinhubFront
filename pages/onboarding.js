@@ -1,13 +1,12 @@
 import Link from "next/link";
 import styles from "@/styles/onboarding.module.scss";
 import Image from "next/image";
-import noImage from "../assets/no_image.jpeg";
+import noImage from "../public/no_image.jpeg";
 import { ChevronRight } from "react-bootstrap-icons";
 
 export default function Onboarding() {
   return (
     <div>
-      <div className="container-fluid px-md-5"></div>
       <div className="col-lg-6">
         <h1 className="mb-5">Quelle est votre situation ?</h1>
         <div>

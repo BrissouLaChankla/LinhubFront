@@ -1,8 +1,10 @@
 import { login } from "@/reducers/user";
 import Image from "next/image";
 import noImage from "../public/no_image.jpeg";
+import google from "../public/google.svg";
+import linkedin from "../public/linkedin.svg";
+import github from "../public/github.svg";
 import { useState } from "react";
-import { Google, Linkedin, Github } from "react-bootstrap-icons";
 import Input from "@/components/Input";
 import styles from "@/styles/onboarding.module.scss";
 import Link from "next/link";
@@ -59,18 +61,35 @@ export default function Login() {
           <h1 className="h2 py-3">Re ! 👋</h1>
           <Link href="/register">Pas encore de compte ?</Link>
         </div>
-        <div>
-          <button>
-            <Google />
-            Google
+        <div className="row">
+          <button className="rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center">
+            <Image
+              src={google}
+              alt="google"
+              style={{ width: "40px", height: "40px" }}
+            />
+            <p className="m-0">Connexion avec Google</p>
+            <p></p>
           </button>
-          <button>
-            <Linkedin />
-            Linkedin
+          <button className="rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center">
+            <Image
+              src={linkedin}
+              alt="linkedin"
+              style={{ width: "40px", height: "40px" }}
+            />
+            <p className="mb-0">Connexion avec Linkedin</p>
+            <p></p>
           </button>
-          <button>
-            <Github />
-            Github
+          <button
+            className={`${styles.githubInput} rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center`}
+          >
+            <Image
+              src={github}
+              alt="github"
+              style={{ width: "40px", height: "40px" }}
+            />
+            <p className="mb-0">Connexion avec Github</p>
+            <p></p>
           </button>
         </div>
         <div className="d-flex justify-content-center align-items-center my-3">

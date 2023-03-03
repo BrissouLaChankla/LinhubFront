@@ -3,13 +3,17 @@ import { useDispatch } from "react-redux";
 import { login } from "@/reducers/user";
 import Image from "next/image";
 import noImage from "../public/no_image.jpeg";
-import { Google, Linkedin, Github } from "react-bootstrap-icons";
+import google from "../public/google.svg";
+import linkedin from "../public/linkedin.svg";
+import github from "../public/github.svg";
 import Input from "@/components/Input";
 import styles from "@/styles/onboarding.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Register() {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [inputValue, setInputValue] = useState({
     signUpEmail: "",
@@ -58,6 +62,7 @@ export default function Register() {
           signUpLastname: "",
           signUpFirstname: "",
         });
+        router.push("/onboarding");
       });
   };
 
@@ -68,19 +73,35 @@ export default function Register() {
           <h1 className="h2 py-3">Créer mon compte Linhub</h1>
           <Link href="/login">Déjà un compte ?</Link>
         </div>
-
-        <div>
-          <button>
-            <Google />
-            Google
+        <div className="row">
+          <button className="rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center">
+            <Image
+              src={google}
+              alt="google"
+              style={{ width: "40px", height: "40px" }}
+            />
+            <p className="m-0">S'incrire avec Google</p>
+            <p></p>
           </button>
-          <button>
-            <Linkedin />
-            Linkedin
+          <button className="rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center">
+            <Image
+              src={linkedin}
+              alt="linkedin"
+              style={{ width: "40px", height: "40px" }}
+            />
+            <p className="mb-0">S'incrire avec Linkedin</p>
+            <p></p>
           </button>
-          <button>
-            <Github />
-            Github
+          <button
+            className={`${styles.githubInput} rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center`}
+          >
+            <Image
+              src={github}
+              alt="github"
+              style={{ width: "40px", height: "40px" }}
+            />
+            <p className="mb-0">S'incrire avec Github</p>
+            <p></p>
           </button>
         </div>
 
