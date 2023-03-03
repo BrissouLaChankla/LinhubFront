@@ -11,6 +11,14 @@ $primary: #d36135;
 $secondary: #263238;
 $light: #e8e8e8;
 
+.animated {
+  transition: all .3s ease;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
 // Text
 $font-family-base: "Noto Sans", sans-serif;
 $font-size-base: 1rem !default;
