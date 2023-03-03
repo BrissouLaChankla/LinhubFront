@@ -20,7 +20,7 @@ export default function Onboarding() {
             <em className="mb-3 text-muted">spartiate ...</em>
             <h3 className="mb-4">Quel est votre métier ?</h3>
             <select
-              class="form-select form-select-lg mb-5"
+              className="form-select form-select-lg mb-5"
               aria-label=".form-select-lg example"
             >
               <option selected>Ahou! Ahou!</option>

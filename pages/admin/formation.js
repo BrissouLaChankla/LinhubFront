@@ -5,50 +5,94 @@ import {
   addFormation,
   deleteFormation,
 } from "@/reducers/formation";
-import { useEffect } from "react";
 import { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 
 const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function Formation() {
-  // const handleNewFormation = () => {
-  //   fetch(`${BACKEND_ADDRESS}/create/token`, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       schoolName: req.body.schoolName,
-  //       degreeName: req.body.degreeName,
-  //       fieldOfStudyName: req.body.fieldOfStudyName,
-  //       startDate: req.body.startDate,
-  //       endDate: req.body.endDate,
-  //       description: req.body.description,
-  //     }),
-  //   })
+  const dispatch = useDispatch();
+  const queryClient = useQueryClient();
+
+  const user = useSelector((state) => state.user.value);
+  const [chosedFormation, setChosedFormation] = useState({});
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["generalInfos"],
+    queryFn: async () => {
+      const formationData = await fetch(
+        "http://localhost:3000/education/" + user.token
+      );
+      const res = formationData.json();
+      console.log(res);
+
+      return res;
+    },
+  });
+
+  console.log(data);
+
+  const deleteMutation = useMutation({
+    mutationFn: (id) => {
+      console.log("id", id);
+      fetch(`${BACKEND_ADDRESS}/education/delete/${id}`, {
+        method: "DELETE",
+      });
+    },
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
+  });
+
+  if (isLoading) return "Chargement...";
+  if (error) return "Aïe, il y a eu un pb: " + error.message;
+
+  // const handleFormation = () => {
+  //   fetch(`${BACKEND_ADDRESS}/token`)
   //     .then((response) => response.json())
   //     .then((data) => {
-  //       if (data.result) {
-  //         dispatch(addFormation(token));
-  //       }
+  //       data.result;
   //     });
   // };
 
-  const handleFormation = () => {
-    fetch(`${BACKEND_ADDRESS}/token`)
-      .then((response) => response.json())
-      .then((data) => {
-        data.result;
-      });
-  };
+  // const handleDelete = () => {
+  //   fetch(`${BACKEND_ADDRESS}/education/${educationId}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       // data.result && dispatch(deleteFormation(educationId));
+  //       data.result &&
+  //     });
 
-  const handleDelete = () => {
-    fetch(`${BACKEND_ADDRESS}/education/${educationId}`, {
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        data.result && dispatch(deleteFormation(educationId));
-      });
-  };
+  // };
+
+  const myFormations = data.data.map((e, i) => (
+    <div className="col-12 col-lg-3 d-flex flex-fill flex-column card text-white bg-secondary mb-2 mx-2 btn">
+      <button
+        type="button"
+        className="btn-close btn-close-white justify-content-end"
+        aria-label="Close"
+        onClick={() => {
+          console.log("click");
+          deleteMutation.mutate(e._id);
+        }}
+      />
+      <div
+        key={i}
+        // className=" "
+        type="submit"
+        data-bs-toggle="modal"
+        data-bs-target="#modalUpdate"
+        onClick={() => setChosedFormation(e)}
+      >
+        <div className="card-header ms-4 ">Ma formation</div>
+        <div className="card-body">
+          <h5 className="card-title">{e.schoolName}</h5>
+        </div>
+      </div>
+    </div>
+  ));
 
   return (
     <div className="container">
@@ -67,78 +111,11 @@ export default function Formation() {
           >
             Ajouter une formation
           </button>
-          {/* <button
-            type="submit"
-            className="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#modalUpdate"
-          >
-            Modifier une formation
-          </button> */}
           <LargeModalRegister />
         </div>
-        <div className="row justify-content-between ">
-          <div
-            className="col-12 col-lg-3 flex-fill card text-white bg-secondary mb-2 mx-2 btn  "
-            type="submit"
-            data-bs-toggle="modal"
-            data-bs-target="#modalUpdate"
-            // data-bs-trigger="#modalUpdate"
-          >
-            <div className="card-header ms-4">
-              Ma formation
-              <button
-                type="button"
-                className="btn-close btn-close-white float-end"
-                aria-label="Close"
-                onClick={() => handleDelete()}
-              ></button>
-            </div>
-            <div className="card-body">
-              <h5 className="card-title">La Capsule</h5>
-            </div>
-          </div>
-          <LargeModalUpdate />
-          <div
-            className="col-12 col-lg-3 flex-fill card text-white bg-secondary mb-2 mx-2 btn "
-            type="submit"
-            data-bs-toggle="modal"
-            data-bs-target="#modalUpdate"
-          >
-            <div className="card-header ms-4">
-              Ma formation
-              <button
-                type="button"
-                className="btn-close btn-close-white float-end"
-                aria-label="Close"
-                onClick={() => handleDelete()}
-              ></button>
-            </div>
-            <div className="card-body">
-              <h5 className="card-title">La Capsule</h5>
-            </div>
-          </div>
-          <div
-            className="col-12 col-lg-3 flex-fill card text-white bg-secondary mb-2 mx-2 btn "
-            type="submit"
-            data-bs-toggle="modal"
-            data-bs-target="#modalUpdate"
-          >
-            <div className="card-header ms-4 ">
-              Ma formation
-              <button
-                type="button"
-                className="btn-close btn-close-white float-end "
-                aria-label="Close"
-                onClick={() => handleDelete()}
-              ></button>
-            </div>
-            <div className="card-body">
-              <h5 className="card-title">La Capsule</h5>
-            </div>
-          </div>
-        </div>
+        <div className="row justify-content-between ">{myFormations}</div>
       </div>
+      <LargeModalUpdate formation={chosedFormation} />
     </div>
   );
 }
