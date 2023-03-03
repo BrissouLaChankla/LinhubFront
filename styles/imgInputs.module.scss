@@ -1,0 +1,30 @@
+.editable {
+    cursor: pointer;
+
+    img {
+        transition: all .3s ease;
+    }
+
+    &:hover {
+        &>img {
+            filter: blur(2.5px);
+        }
+
+        .editPen {
+            transform: translate(-50%, -30px);
+            opacity: 1;
+        }
+
+    }
+}
+
+.editPen {
+    transition: all .3s ease;
+    position: absolute;
+    top: 50%;
+    font-size: 2.5rem;
+    opacity: 0;
+    left: 50%;
+    transform: translate(-50%, -10px);
+    color: var(--primary);
+}
