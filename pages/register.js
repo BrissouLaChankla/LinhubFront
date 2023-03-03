@@ -9,9 +9,11 @@ import github from "../public/github.svg";
 import Input from "@/components/Input";
 import styles from "@/styles/onboarding.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Register() {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [inputValue, setInputValue] = useState({
     signUpEmail: "",
@@ -60,6 +62,7 @@ export default function Register() {
           signUpLastname: "",
           signUpFirstname: "",
         });
+        router.push("/onboarding");
       });
   };
 
