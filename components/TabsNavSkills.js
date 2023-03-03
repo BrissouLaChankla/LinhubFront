@@ -1,4 +1,5 @@
 import LogoSkill from "./logoSkill";
+
 import {
   android,
   reactnative,
@@ -93,9 +94,9 @@ import {
   rails,
 } from "../utils/images";
 import { useState } from "react";
-
-export default function TabsNavSkills() {
+export default function TabsNavSkills(props) {
   const [currentTab, setCurrentTab] = useState("1");
+  console.log(currentTab)
 
   const allSkills = [
     {
@@ -555,16 +556,11 @@ export default function TabsNavSkills() {
     },
   ];
 
-  const logos = allSkills.map((logo, i) => {
-    return (
-      <LogoSkill
-        key={i}
-        url={logo.url}
-        name={logo.name}
-        categorie={logo.categorie}
-      />
-    );
-  });
+  const addSkill = (skill) => {
+    props.addSkill(skill)
+  }
+
+
 
   const programmingLanguages = allSkills
     .filter((logo) => {
@@ -572,12 +568,14 @@ export default function TabsNavSkills() {
     })
     .map((logo, i) => {
       return (
-        <LogoSkill
-          key={i}
-          url={logo.url}
-          name={logo.name}
-          categorie={logo.categorie}
-        />
+        <div key={i} className={`p-2 m-2 position-relative rounded pointer animated`+ (props.selectedSkills.some(e => e.name === logo.name) ? ' bg-success bg-opacity-25' : '')}>
+          <LogoSkill
+            addSkill={addSkill}
+            url={logo.url}
+            name={logo.name}
+            categorie={logo.categorie}
+          />
+        </div>
       );
     });
 
@@ -587,12 +585,14 @@ export default function TabsNavSkills() {
     })
     .map((logo, i) => {
       return (
+        <div key={i} className={`p-2 m-2 position-relative rounded pointer animated`+ (props.selectedSkills.some(e => e.name === logo.name) ? ' bg-success bg-opacity-25' : '')}>
         <LogoSkill
-          key={i}
+          addSkill={addSkill}
           url={logo.url}
           name={logo.name}
           categorie={logo.categorie}
         />
+      </div>
       );
     });
 
@@ -602,12 +602,14 @@ export default function TabsNavSkills() {
     })
     .map((logo, i) => {
       return (
+        <div key={i} className={`p-2 m-2 position-relative rounded pointer animated`+ (props.selectedSkills.some(e => e.name === logo.name) ? ' bg-success bg-opacity-25' : '')}>
         <LogoSkill
-          key={i}
+          addSkill={addSkill}
           url={logo.url}
           name={logo.name}
           categorie={logo.categorie}
         />
+      </div>
       );
     });
 
@@ -617,12 +619,14 @@ export default function TabsNavSkills() {
     })
     .map((logo, i) => {
       return (
+        <div key={i} className={`p-2 m-2 position-relative rounded pointer animated`+ (props.selectedSkills.some(e => e.name === logo.name) ? ' bg-success bg-opacity-25' : '')}>
         <LogoSkill
-          key={i}
+          addSkill={addSkill}
           url={logo.url}
           name={logo.name}
           categorie={logo.categorie}
         />
+      </div>
       );
     });
 
@@ -632,12 +636,14 @@ export default function TabsNavSkills() {
     })
     .map((logo, i) => {
       return (
+        <div key={i} className={`p-2 m-2 position-relative rounded pointer animated`+ (props.selectedSkills.some(e => e.name === logo.name) ? ' bg-success bg-opacity-25' : '')}>
         <LogoSkill
-          key={i}
+          addSkill={addSkill}
           url={logo.url}
           name={logo.name}
           categorie={logo.categorie}
         />
+      </div>
       );
     });
 
@@ -647,12 +653,14 @@ export default function TabsNavSkills() {
     })
     .map((logo, i) => {
       return (
+        <div key={i} className={`p-2 m-2 position-relative rounded pointer animated`+ (props.selectedSkills.some(e => e.name === logo.name) ? ' bg-success bg-opacity-25' : '')}>
         <LogoSkill
-          key={i}
+          addSkill={addSkill}
           url={logo.url}
           name={logo.name}
           categorie={logo.categorie}
         />
+      </div>
       );
     });
 
@@ -662,12 +670,14 @@ export default function TabsNavSkills() {
     })
     .map((logo, i) => {
       return (
+        <div key={i} className={`p-2 m-2 position-relative rounded pointer animated`+ (props.selectedSkills.some(e => e.name === logo.name) ? ' bg-success bg-opacity-25' : '')}>
         <LogoSkill
-          key={i}
+          addSkill={addSkill}
           url={logo.url}
           name={logo.name}
           categorie={logo.categorie}
         />
+      </div>
       );
     });
 
@@ -709,38 +719,43 @@ export default function TabsNavSkills() {
     },
   ];
 
-  const handleTabClick = (e) => {
-    setCurrentTab(e.target.id);
+  const handleTabClick = (id) => {
+    setCurrentTab(id);
   };
 
   const tabsOnglets = tabs.map((tab, i) => {
     return (
-      <button
+      <li className="nav-item pointer"
         key={i}
         id={tab.id}
         disabled={currentTab === `${tab.id}`}
-        onClick={handleTabClick}
+        onClick={() => handleTabClick(tab.id)}
       >
+        <a className={(tab.id == currentTab) ? 'nav-link active' : 'nav-link'}>
         {tab.tabTitle}
-      </button>
+        </a>
+      </li>
     );
   });
 
   const tabContent = tabs.map((tab, i) => {
     return (
-      <div key={i}>
+      <div className="d-flex flex-wrap" key={i}>
         {currentTab === `${tab.id}` && (
-          <div>
-            <p>{tab.content}</p>
-          </div>
+          <>
+            {tab.content}
+          </>
         )}
       </div>
     );
   });
 
   return (
-    <div className="container">
-      <div className="tabs">{tabsOnglets}</div>
+    <div>
+      <ul className="nav nav-tabs">
+      {tabsOnglets}
+    </ul>
+      
       {tabContent}
     </div>
   );

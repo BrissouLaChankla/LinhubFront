@@ -1,7 +1,11 @@
 import Image from "next/image";
+import tooltip from "@/styles/Tooltip.module.scss"
 
-export default function LogoSkill({ url, name, categorie }) {
+export default function LogoSkill({ url, name, categorie, addSkill }) {
   return (
-    <Image src={url} alt={name} categorie={categorie} width={50} height={50} />
+      <span className={tooltip.tooltip} >
+        <Image src={url} alt={name} categorie={categorie} width={75} height={75} onClick={() => addSkill({name, url, categorie})}/>
+        <span className={tooltip.tooltiptext}>{name}</span>
+      </span>
   );
 }
