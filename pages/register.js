@@ -112,7 +112,7 @@ export default function Register() {
           <form onSubmit={handleSignUp}>
             <Input
               type="text"
-              label="Nom"
+              label="Prénom"
               required={true}
               value={signUpFirstname}
               onChange={handleChange}
@@ -120,7 +120,7 @@ export default function Register() {
             />
             <Input
               type="text"
-              label="Prénom"
+              label="Nom"
               required={true}
               value={signUpLastname}
               onChange={handleChange}
