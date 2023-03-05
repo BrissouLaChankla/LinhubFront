@@ -68,13 +68,13 @@ export default function Register() {
 
   return (
     <div className="container-fluid px-md-5">
-      <div className="col-lg-6">
-        <div className="d-flex justify-content-between align-items-center">
-          <h1 className="h2 py-3">Créer mon compte Linhub</h1>
-          <Link href="/login">Déjà un compte ?</Link>
-        </div>
-        <div className="row">
-          <button className="rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center">
+      <div className="row">
+        <div className="col-lg-6">
+          <div className="d-flex justify-content-between align-items-center">
+            <h1 className="h2 py-3">Créer mon compte Linhub</h1>
+            <Link href="/login">Déjà un compte ?</Link>
+          </div>
+          <button className="w-100 rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center">
             <Image
               src={google}
               alt="google"
@@ -83,7 +83,7 @@ export default function Register() {
             <p className="m-0">S'incrire avec Google</p>
             <p></p>
           </button>
-          <button className="rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center">
+          <button className="w-100 rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center">
             <Image
               src={linkedin}
               alt="linkedin"
@@ -93,7 +93,7 @@ export default function Register() {
             <p></p>
           </button>
           <button
-            className={`${styles.githubInput} rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center`}
+            className={`${styles.githubInput} w-100 rounded-5 btn btn-outline-dark btn-lg mb-3 shadow d-flex justify-content-between align-items-center`}
           >
             <Image
               src={github}
@@ -103,59 +103,62 @@ export default function Register() {
             <p className="mb-0">S'incrire avec Github</p>
             <p></p>
           </button>
-        </div>
-
-        <div className="d-flex justify-content-center align-items-center my-3">
-          <div className="border-bottom w-25"></div>
-          <div className="px-3">ou</div>
-          <div className="border-bottom w-25"></div>
-        </div>
-        <form onSubmit={handleSignUp}>
-          <Input
-            type="text"
-            label="Nom"
-            required={true}
-            value={signUpFirstname}
-            onChange={handleChange}
-            name="signUpFirstname"
-          />
-          <Input
-            type="text"
-            label="Prénom"
-            required={true}
-            value={signUpLastname}
-            onChange={handleChange}
-            name="signUpLastname"
-          />
-          <Input
-            type="email"
-            label="Email"
-            value={signUpEmail}
-            required={true}
-            onChange={handleChange}
-            name="signUpEmail"
-          />
-          <Input
-            type="password"
-            label="Mot de passe"
-            required={true}
-            value={signUpPassword}
-            onChange={handleChange}
-            name="signUpPassword"
-          />
-          <div className="text-end">
-            <button type="submit" className="btn btn-primary">
-              S'inscrire
-            </button>
+          <div className="d-flex justify-content-center align-items-center my-3">
+            <div className="border-bottom w-25"></div>
+            <div className="px-3">ou</div>
+            <div className="border-bottom w-25"></div>
           </div>
-        </form>
+
+          <form onSubmit={handleSignUp}>
+            <Input
+              type="text"
+              label="Nom"
+              required={true}
+              value={signUpFirstname}
+              onChange={handleChange}
+              name="signUpFirstname"
+            />
+            <Input
+              type="text"
+              label="Prénom"
+              required={true}
+              value={signUpLastname}
+              onChange={handleChange}
+              name="signUpLastname"
+            />
+            <Input
+              type="email"
+              label="Email"
+              value={signUpEmail}
+              required={true}
+              onChange={handleChange}
+              name="signUpEmail"
+            />
+            <Input
+              type="password"
+              label="Mot de passe"
+              required={true}
+              value={signUpPassword}
+              onChange={handleChange}
+              name="signUpPassword"
+            />
+            <div className="text-end mt-4">
+              <button type="submit" className="btn btn-primary">
+                S'inscrire
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
-      <Image
-        src={noImage}
-        alt="no-image"
-        className={`d-none d-lg-block ${styles.halfBg}`}
-      />
+      <div className="col-lg-6">
+
+        <Image
+          src={noImage}
+          alt="no-image"
+          className={`d-none d-lg-block ${styles.halfBg}`}
+        />
+      </div>
     </div>
   );
 }

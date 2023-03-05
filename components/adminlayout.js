@@ -1,6 +1,8 @@
 import AdminNavbar from "./layouts/adminNavbar";
 import AdminFooter from "./layouts/adminFooter";
-export default function AdminLayout({ children }) {
+import requireAuth from '../pages/middlewares/requireAuth';
+
+function AdminLayout({ children }) {
     return (
       <div className="d-flex flex-column min-vh-100">
         <AdminNavbar />
@@ -9,4 +11,4 @@ export default function AdminLayout({ children }) {
       </div>
     );
   }
-  
+export default requireAuth(AdminLayout);

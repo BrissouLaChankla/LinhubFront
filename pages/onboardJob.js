@@ -53,7 +53,7 @@ export default function Onboarding() {
                 Développeur Fullstack
               </option>
               <option value="Développeur Front">Développeur Front</option>
-              <option value="éveloppeur Back">Développeur Back</option>
+              <option value="Développeur Back">Développeur Back</option>
               <option value="Développeur Mobile">Développeur Mobile</option>
               <option value="Devops">Devops</option>
               <option value="Data analyst">Data analyst</option>
