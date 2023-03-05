@@ -4,17 +4,28 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 export default function Onboarding() {
-  const [experienceValue, setExperienceValue] = useState("");
-  const [jobValue, setJobValue] = useState("");
+  const [experienceValue, setExperienceValue] = useState(null);
+  const [jobValue, setJobValue] = useState(null);
+  console.log(experienceValue, jobValue)
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  const handleChange = (e) => {
-    setExperienceValue(e.target.value);
-  };
+const experiences = [
+  {
+    yearsRange:"0-2 ans",
+    name:"Newbie"
+  },
+  {
+    yearsRange:"2-5 ans",
+    name:"Élémentaliste"
+  },
+  {
+    yearsRange:"5 ans et +",
+    name:"Mage noir"
+  },
+]
 
   const handleSubmit = () => {
-    console.log(jobValue);
     console.log(user.value.token);
     fetch("http://localhost:3000/generalInfo/setup/" + user.value.token, {
       method: "POST",
@@ -31,9 +42,9 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="container-fluid px-md-5">
+    <div className="container-fluid ">
       <div className="row">
-        <div className="col-lg-7">
+        <div className="col-lg-7 px-md-5">
           <h1 className="mb-2">Bienvenue parmi nous !</h1>
           <h3 className="mb-5">
             On commence par un petit interrogatoire ... 🕵🏻
@@ -62,40 +73,26 @@ export default function Onboarding() {
           <div>
             <h3 className="mb-4">Quelle est votre expérience ?</h3>
             <div className="d-flex justify-content-between mb-3">
-              <button
-                type="button"
-                className="btn btn-outline-primary rounded d-flex flex-column justify-content-center align-items-center p-4 w-25"
-                data-bs-toggle="button"
-                onClick={handleChange}
-                value="Junior"
-              >
-                <strong>0-2 ans</strong>
-                <em>Newbie</em>
-              </button>
-              <button
-                type="button"
-                className="btn btn-outline-primary rounded d-flex flex-column justify-content-center align-items-center p-4 w-25"
-                data-bs-toggle="button"
-                onClick={handleChange}
-                value="Intermediaire"
-              >
-                <strong>2-5 ans</strong>
-                <em>Elementalist</em>
-              </button>
-              <button
-                type="button"
-                className="btn btn-outline-primary rounded d-flex flex-column justify-content-center align-items-center p-4 w-25"
-                data-bs-toggle="button"
-                onClick={handleChange}
-                value="Senior"
-              >
-                <strong>5 ans et +</strong>
-                <em>Mage Noir</em>
-              </button>
+              {
+                experiences.map(experience =>
+                  <button
+                  type="button"
+                  className={"btn btn-outline-primary rounded d-flex flex-column justify-content-center align-items-center p-4 w-25" + (experience.name === experienceValue ? ' active' : '')}
+                  onClick={() => setExperienceValue(experience.name)}
+                >
+                  <strong>{experience.yearsRange}</strong>
+                  <em>{experience.name}</em>
+                </button>
+                  )
+              }
             </div>
             <div className="text-end">
               <Link
-                className="btn btn-primary"
+              className={
+                (jobValue && experienceValue)
+                  ? "btn btn-primary mt-5"
+                  : "btn btn-primary mt-5 disabled"
+              }
                 onClick={() => handleSubmit()}
                 href={{ pathname: "/onboardSkill", query: { job: jobValue } }}
               >
