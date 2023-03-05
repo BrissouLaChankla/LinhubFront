@@ -17,21 +17,23 @@ export default function Onboarding() {
             <div className="d-flex align-items-center">
               <div className="fs-1">👨‍💻</div>
               <div className="ps-4">
-                <h3>Le dev</h3>
-                <span>je crée mon profil</span>
+                <h3>Je suis un développeur</h3>
+                <span>Je crée mon profil</span>
               </div>
             </div>
             <ChevronRight />
           </Link>
           <Link
-            className="border rounded text-decoration-none d-flex align-items-center p-3 mt-4 justify-content-between "
-            href="/onboardRecruteur"
+          style={{cursor:"not-allowed"}}
+            className="opacity-25 border rounded text-decoration-none d-flex align-items-center p-3 mt-4 justify-content-between "
+            // href="/onboardRecruteur"
+            href=""
           >
             <div className="d-flex align-items-center">
               <div className="fs-1">🔍</div>
               <div className="ps-4">
-                <h3>Recruteur</h3>
-                <span>Je recherche Le dev</span>
+                <h3>Je suis un recruteur</h3>
+                <span>Je recherche <u>LE</u> dev</span>
               </div>
             </div>
             <ChevronRight />
