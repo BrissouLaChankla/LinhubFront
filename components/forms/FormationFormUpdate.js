@@ -172,6 +172,7 @@ export default function FormationFormUpdate({ id }) {
           <input
             type="text"
             className="form-control"
+            value={form.result}
             id="result"
             name="result"
             onChange={(e) => {
