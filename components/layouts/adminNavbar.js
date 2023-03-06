@@ -94,7 +94,7 @@ function AdminNavbar() {
               Formations
             </Link>
             <span className="d-none d-lg-inline">|</span>
-            <Link className="nav-link" href="/admin">
+            <Link className="nav-link" href="/admin/experience">
               Expériences pro
             </Link>
             <span className="d-none d-lg-inline">|</span>
