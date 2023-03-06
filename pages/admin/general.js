@@ -182,7 +182,7 @@ export default function GeneralInfos() {
                 className="form-control"
                 ref={firstname}
                 id="firstname"
-                defaultValue={data.res.firstname}
+                defaultValue={data?.res.firstname}
               />
             </div>
             <div className="flex-grow-1 ">
@@ -194,7 +194,7 @@ export default function GeneralInfos() {
                 className="form-control"
                 ref={lastname}
                 id="lastname"
-                defaultValue={data.res.lastname}
+                defaultValue={data?.res.lastname}
               />
             </div>
           </div>
@@ -209,8 +209,8 @@ export default function GeneralInfos() {
                 ref={birthday}
                 id="birthday"
                 defaultValue={
-                  data.res.birthday
-                    ? new Date(data.res.birthday).toISOString().split("T")[0]
+                  data?.res.birthday
+                    ? new Date(data?.res.birthday).toISOString().split("T")[0]
                     : new Date("1998-05-04T00:00:00.000+00:00")
                         .toISOString()
                         .split("T")[0]
@@ -226,7 +226,7 @@ export default function GeneralInfos() {
                 className="form-control"
                 ref={address}
                 id="address"
-                defaultValue={data.res.address}
+                defaultValue={data?.res.address}
               />
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function GeneralInfos() {
                 className="form-control"
                 ref={experience}
                 id="experience"
-                defaultValue={data.res.experience}
+                defaultValue={data?.res.experience}
               />
             </div>
             <div className="mb-3 flex-grow-1">
@@ -252,7 +252,7 @@ export default function GeneralInfos() {
                 className="form-control"
                 ref={headline}
                 id="headline"
-                defaultValue={data.res.headline}
+                defaultValue={data?.res.headline}
               />
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function GeneralInfos() {
               className="form-control"
               id="description"
               ref={description}
-              defaultValue={data.res.description}
+              defaultValue={data?.res.description}
               rows="3"
             />
           </div>
@@ -275,7 +275,7 @@ export default function GeneralInfos() {
                 className="form-check-input"
                 type="checkbox"
                 ref={hasAcceptedToBeShown}
-                defaultChecked={data.res.hasAcceptedToBeShown}
+                defaultChecked={data?.res.hasAcceptedToBeShown}
                 id="hasAcceptedToBeShown"
               />
               <label

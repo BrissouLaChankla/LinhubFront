@@ -19,7 +19,7 @@ export default function Formation() {
   const [chosedFormation, setChosedFormation] = useState({});
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ["generalInfos"],
+    queryKey: ["formations"],
     queryFn: async () => {
       const formationData = await fetch(
         "http://localhost:3000/education/" + user.token
@@ -30,8 +30,6 @@ export default function Formation() {
       return res;
     },
   });
-
-  console.log(data);
 
   const deleteMutation = useMutation({
     mutationFn: (id) => {
@@ -46,6 +44,8 @@ export default function Formation() {
 
   if (isLoading) return "Chargement...";
   if (error) return "Aïe, il y a eu un pb: " + error.message;
+
+  console.log(data);
 
   // const handleFormation = () => {
   //   fetch(`${BACKEND_ADDRESS}/token`)
@@ -66,8 +66,7 @@ export default function Formation() {
   //     });
 
   // };
-
-  const myFormations = data.data.map((e, i) => (
+  const myFormations = data?.data.map((e, i) => (
     <div className="col-12 row-cols-1 flex-fill col-lg-3 d-flex flex-column card text-white bg-secondary mb-3 mx-2 btn">
       <button
         type="button"
