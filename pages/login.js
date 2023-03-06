@@ -8,12 +8,14 @@ import { useState } from "react";
 import Input from "@/components/Input";
 import styles from "@/styles/onboarding.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [inputValue, setInputValue] = useState({
     signInEmail: "",
     signInPassword: "",
   });
+  const router = useRouter();
 
   const { signInEmail, signInPassword } = inputValue;
 
@@ -51,6 +53,7 @@ export default function Login() {
           signInEmail: "",
           signInPassword: "",
         });
+        router.push("/admin");
       });
   };
 
@@ -121,16 +124,13 @@ export default function Login() {
           </form>
         </div>
         <div className="col-lg-6">
-
           <Image
             src={noImage}
             className={`d-none d-lg-block ${styles.halfBg}`}
             alt="no-image"
           />
         </div>
-
       </div>
-
     </div>
   );
 }
