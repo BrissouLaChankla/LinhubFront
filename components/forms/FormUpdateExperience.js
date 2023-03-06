@@ -3,39 +3,39 @@ import { useSelector } from "react-redux";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 const BACKEND_ADDRESS = "http://localhost:3000";
 
-export default function FormationFormUpdate({ id }) {
+export default function FormUpdateExperience({ id }) {
   const user = useSelector((state) => state.user.value);
 
   const queryClient = useQueryClient();
 
   const [form, setForm] = useState({
-    schoolName: "",
-    degreeName: "",
-    fieldOfStudyName: "",
-    startDate: "",
-    endDate: "",
+    company: "",
     description: "",
-    result: "",
+    location: "",
+    title: "",
+    startMonthYear: "",
+    endMonthYear: "",
+    typeOfContract: "",
   });
 
   useEffect(() => {
-    fetch("http://localhost:3000/education/" + id + "/" + user.token)
+    fetch("http://localhost:3000/experiences/" + id + "/" + user.token)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.result) {
           const keys = [
-            "schoolName",
-            "degreeName",
-            "fieldOfStudyName",
-            "startDate",
-            "endDate",
+            "company",
             "description",
-            "result",
+            "location",
+            "title",
+            "startMonthYear",
+            "endMonthYear",
+            "typeOfContract",
           ];
           for (let field of keys) {
             if (data.data[field]) {
-              if (field === "startDate" || field === "endDate") {
+              if (field === "startMonthYear" || field === "endMonthYear") {
                 data.data[field] = data.data[field].slice(0, 7);
                 console.log(data.data[field]);
               }
@@ -59,7 +59,7 @@ export default function FormationFormUpdate({ id }) {
 
   const updateMutation = useMutation({
     mutationFn: () => {
-      fetch(`${BACKEND_ADDRESS}/education/${id}/${user.token}`, {
+      fetch(`${BACKEND_ADDRESS}/experiences/${id}/${user.token}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -73,50 +73,50 @@ export default function FormationFormUpdate({ id }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        updateMutation.mutate();
+        addMutation.mutate();
       }}
     >
       <div className="mx-3 my-3">
         <div className="mb-3">
-          <label htmlFor="formation_name" className="form-label">
-            Nom de la formation
+          <label htmlFor="experience_company" className="form-label">
+            Nom de la compagnie
           </label>
           <input
             type="text"
             className="form-control"
-            id="formation_name"
-            value={form.schoolName}
-            name="schoolName"
+            id="experience_company"
+            value={form.company}
+            name="company"
             onChange={(e) => {
               handleChange(e);
             }}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="degree" className="form-label">
-            Diplôme
+          <label htmlFor="description" className="form-label">
+            Description
           </label>
           <input
             type="text"
             className="form-control"
-            id="degree"
-            name="degreeName"
-            value={form.degreeName}
+            id="description"
+            name="description"
+            value={form.description}
             onChange={(e) => {
               handleChange(e);
             }}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="field_of_study" className="form-label">
-            Domaine d’études
+          <label htmlFor="location" className="form-label">
+            Localisation
           </label>
           <input
             type="text"
             className="form-control"
-            value={form.fieldOfStudyName}
-            name="fieldOfStudyName"
-            id="field_of_study"
+            value={form.location}
+            name="location"
+            id="location"
             onChange={(e) => {
               handleChange(e);
             }}
@@ -131,7 +131,7 @@ export default function FormationFormUpdate({ id }) {
               type="month"
               className="form-control"
               id="start_date"
-              value={form.startDate}
+              value={form.startMonthYear}
               name="startDate"
               onChange={(e) => {
                 handleChange(e);
@@ -145,7 +145,7 @@ export default function FormationFormUpdate({ id }) {
             <input
               type="month"
               className="form-control"
-              value={form.endDate}
+              value={form.endMonthYear}
               id="end_date"
               name="endDate"
               onChange={(e) => {
@@ -155,30 +155,30 @@ export default function FormationFormUpdate({ id }) {
           </div>
         </div>
         <div className="mb-3">
-          <label htmlFor="result" className="form-label">
-            Résultat obtenu
+          <label htmlFor="title" className="form-label">
+            Intitulé de poste
           </label>
           <input
             type="text"
             className="form-control"
-            value={form.result}
-            id="result"
-            name="result"
+            value={form.title}
+            id="title"
+            name="title"
             onChange={(e) => {
               handleChange(e);
             }}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">
-            Descriptif
+          <label htmlFor="typeOfContract" className="form-label">
+            Type de contrat
           </label>
           <input
             type="text"
             className="form-control"
-            id="description"
-            value={form.description}
-            name="description"
+            id="typeOfContract"
+            value={form.typeOfContract}
+            name="typeOfContract"
             onChange={(e) => {
               handleChange(e);
             }}
@@ -197,7 +197,7 @@ export default function FormationFormUpdate({ id }) {
             className="btn btn-primary"
             data-bs-dismiss="modal"
           >
-            Enregistrer la formation
+            Enregistrer l'expérience
           </button>
         </div>
       </div>
