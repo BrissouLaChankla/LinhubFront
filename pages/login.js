@@ -9,6 +9,7 @@ import Input from "@/components/Input";
 import styles from "@/styles/onboarding.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
   const [inputValue, setInputValue] = useState({
@@ -16,6 +17,7 @@ export default function Login() {
     signInPassword: "",
   });
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const { signInEmail, signInPassword } = inputValue;
 
@@ -42,17 +44,18 @@ export default function Login() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        data.result &&
+        if (data.result) {
           dispatch(
             login({
               token: data.token,
               email: signInEmail,
             })
           );
-        setInputValue({
-          signInEmail: "",
-          signInPassword: "",
-        });
+          setInputValue({
+            signInEmail: "",
+            signInPassword: "",
+          });
+        }
         router.push("/admin");
       });
   };
