@@ -1,13 +1,11 @@
 import { useState, useRef, use, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function FormationFormUpdate({ id }) {
   const user = useSelector((state) => state.user.value);
-
   const queryClient = useQueryClient();
-
   const [form, setForm] = useState({
     schoolName: "",
     degreeName: "",
@@ -58,15 +56,20 @@ export default function FormationFormUpdate({ id }) {
   };
 
   const updateMutation = useMutation({
-    mutationFn: () => {
-      fetch(`${BACKEND_ADDRESS}/education/${id}/${user.token}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    mutationFn: async () => {
+      const data = await fetch(
+        `${BACKEND_ADDRESS}/education/${id}/${user.token}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }
+      );
+      return data;
     },
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["formations"] });
+    },
   });
 
   return (

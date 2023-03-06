@@ -7,7 +7,7 @@ import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function Formation() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const queryClient = useQueryClient();
 
   const user = useSelector((state) => state.user.value);
@@ -34,15 +34,15 @@ export default function Formation() {
       });
     },
     onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
+      queryClient.invalidateQueries({ queryKey: ["formations"] }),
   });
 
   if (isLoading) return "Chargement...";
   if (error) return "Aïe, il y a eu un pb: " + error.message;
 
-  console.log(data);
+  // console.log(data);
 
-  const myFormations = data?.data.map((e, i) => (
+  const myFormations = data.data.map((e, i) => (
     <div
       key={i}
       className="col-12 flex-fill col-lg-3 d-flex flex-column card text-white bg-secondary mb-3 mx-2 btn"

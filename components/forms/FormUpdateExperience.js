@@ -58,22 +58,27 @@ export default function FormUpdateExperience({ id }) {
   };
 
   const updateMutation = useMutation({
-    mutationFn: () => {
-      fetch(`${BACKEND_ADDRESS}/experiences/${id}/${user.token}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    mutationFn: async () => {
+      const data = await fetch(
+        `${BACKEND_ADDRESS}/experiences/${id}/${user.token}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }
+      );
+      return data;
     },
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["experiences"] });
+    },
   });
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        addMutation.mutate();
+        updateMutation.mutate();
       }}
     >
       <div className="mx-3 my-3">
@@ -132,7 +137,7 @@ export default function FormUpdateExperience({ id }) {
               className="form-control"
               id="start_date"
               value={form.startMonthYear}
-              name="startDate"
+              name="startMonthYear"
               onChange={(e) => {
                 handleChange(e);
               }}
@@ -147,7 +152,7 @@ export default function FormUpdateExperience({ id }) {
               className="form-control"
               value={form.endMonthYear}
               id="end_date"
-              name="endDate"
+              name="endMonthYear"
               onChange={(e) => {
                 handleChange(e);
               }}

@@ -34,7 +34,7 @@ export default function Experience() {
       });
     },
     onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
+      queryClient.invalidateQueries({ queryKey: ["experiences"] }),
   });
 
   if (isLoading) return "Chargement...";
@@ -43,7 +43,10 @@ export default function Experience() {
   console.log(data);
 
   const myExperiences = data?.data.map((e, i) => (
-    <div className="col-12 row-cols-1 flex-fill col-lg-3 d-flex flex-column card text-white bg-secondary mb-3 mx-2 btn">
+    <div
+      key={i}
+      className="col-12 flex-fill col-lg-3 d-flex flex-column card text-white bg-secondary mb-3 mx-2 btn"
+    >
       <div className="d-flex justify-content-end">
         <button
           type="button"
