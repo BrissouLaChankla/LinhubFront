@@ -45,7 +45,7 @@ export default function FormationFormUpdate({ closeModal }) {
         addMutation.mutate();
       }}
     >
-      <div>
+      <div className="mx-3 my-3">
         <div className="mb-3">
           <label htmlFor="formation_name" className="form-label">
             Nom de la formation
