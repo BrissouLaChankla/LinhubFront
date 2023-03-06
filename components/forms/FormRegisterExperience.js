@@ -29,15 +29,19 @@ export default function FormUpdateExperience({ closeModal }) {
   };
 
   const addMutation = useMutation({
-    mutationFn: () => {
-      fetch(`${BACKEND_ADDRESS}/experiences/create/${user.token}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    mutationFn: async () => {
+      const data = await fetch(
+        `${BACKEND_ADDRESS}/experiences/create/${user.token}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }
+      );
+      return data;
     },
     onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
+      queryClient.invalidateQueries({ queryKey: ["experiences"] }),
   });
 
   return (
