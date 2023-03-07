@@ -102,7 +102,7 @@ function AdminNavbar() {
               Projets
             </Link>
             <span className="d-none d-lg-inline">|</span>
-            <Link className="nav-link" href="/admin">
+            <Link className="nav-link" href="/admin/apiPortofolio">
               API & Portofolio
             </Link>
           </div>

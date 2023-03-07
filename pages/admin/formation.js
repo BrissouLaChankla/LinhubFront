@@ -1,13 +1,12 @@
 import LargeModalRegister from "@/components/admin/largeModalRegister";
 import LargeModalUpdate from "@/components/admin/largeModalUpdate";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 
 const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function Formation() {
-  // const dispatch = useDispatch();
   const queryClient = useQueryClient();
 
   const user = useSelector((state) => state.user.value);
@@ -39,8 +38,6 @@ export default function Formation() {
 
   if (isLoading) return "Chargement...";
   if (error) return "Aïe, il y a eu un pb: " + error.message;
-
-  // console.log(data);
 
   const myFormations = data.data.map((e, i) => (
     <div

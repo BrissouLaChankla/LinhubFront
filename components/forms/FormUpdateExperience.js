@@ -129,7 +129,7 @@ export default function FormUpdateExperience({ id }) {
         </div>
         <div className="d-flex gap-4">
           <div className="mb-3 flex-grow-1">
-            <label htmlFor="start_date" className="form-label">
+            <label htmlFor="startMonthYear" className="form-label">
               Date de début
             </label>
             <input
@@ -144,14 +144,14 @@ export default function FormUpdateExperience({ id }) {
             />
           </div>
           <div className="mb-3 flex-grow-1">
-            <label htmlFor="end_date" className="form-label">
+            <label htmlFor="endMonthYear" className="form-label">
               Date de fin
             </label>
             <input
               type="month"
               className="form-control"
               value={form.endMonthYear}
-              id="end_date"
+              id="endMonthYear"
               name="endMonthYear"
               onChange={(e) => {
                 handleChange(e);
