@@ -25,15 +25,19 @@ export default function ProjectFormUpdate({ closeModal }) {
   };
 
   const addMutation = useMutation({
-    mutationFn: () => {
-      fetch(`${BACKEND_ADDRESS}/projects/create/${user.token}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    mutationFn: async () => {
+      const data = await fetch(
+        `${BACKEND_ADDRESS}/projects/create/${user.token}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }
+      );
+      console.log(data.json());
+      return data;
     },
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["projects"] }),
   });
 
   return (

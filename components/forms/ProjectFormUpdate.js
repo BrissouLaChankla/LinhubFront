@@ -48,15 +48,18 @@ export default function ProjectFormUpdate({ id }) {
   };
 
   const updateMutation = useMutation({
-    mutationFn: () => {
-      fetch(`${BACKEND_ADDRESS}/projects/${id}/${user.token}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    mutationFn: async () => {
+      const data = await fetch(
+        `${BACKEND_ADDRESS}/projects/${id}/${user.token}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }
+      );
+      return data;
     },
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["projects"] }),
   });
 
   return (

@@ -1,0 +1,548 @@
+[
+  {
+    "id": 1,
+    "name": "React Native",
+    "url": "reactnative",
+    "categorie": "Mobile"
+  },
+  {
+    "id": 2,
+    "name": "Android",
+    "url": "android",
+    "categorie": "Mobile"
+  },
+  {
+    "id": 3,
+    "name": "Apache Cordova",
+    "url": "apachecordova",
+    "categorie": "Mobile"
+  },
+  {
+    "id": 4,
+    "name": "Dart",
+    "url": "dartlang",
+    "categorie": "Mobile"
+  },
+  {
+    "id": 5,
+    "name": "Flutter",
+    "url": "flutter",
+    "categorie": "Mobile"
+  },
+  {
+    "id": 6,
+    "name": "Ionic",
+    "url": "ionic",
+    "categorie": "Mobile"
+  },
+  {
+    "id": 7,
+    "name": "Kotlin",
+    "url": "kotlin",
+    "categorie": "Mobile"
+  },
+  {
+    "id": 8,
+    "name": "NativeScript",
+    "url": "nativescript",
+    "categorie": "Mobile"
+  },
+  {
+    "id": 9,
+    "name": "Xamarin",
+    "url": "xamarin",
+    "categorie": "Mobile"
+  },
+  {
+    "id": 10,
+    "name": "Node.js",
+    "url": "nodejs",
+    "categorie": "Backend"
+  },
+  {
+    "id": 11,
+    "name": "Express",
+    "url": "express",
+    "categorie": "Backend"
+  },
+  {
+    "id": 12,
+    "name": "NestJS",
+    "url": "nestjs",
+    "categorie": "Backend"
+  },
+  {
+    "id": 13,
+    "name": "Hadoop",
+    "url": "hadoop",
+    "categorie": "Backend"
+  },
+  {
+    "id": 14,
+    "name": "GraphQL",
+    "url": "graphql",
+    "categorie": "Backend"
+  },
+  {
+    "id": 15,
+    "name": "Kafka",
+    "url": "kafka",
+    "categorie": "Backend"
+  },
+  {
+    "id": 16,
+    "name": "Solr",
+    "url": "solr",
+    "categorie": "Backend"
+  },
+  {
+    "id": 17,
+    "name": "Spring",
+    "url": "springio",
+    "categorie": "Backend"
+  },
+  {
+    "id": 18,
+    "name": "Nginx",
+    "url": "nginx",
+    "categorie": "Backend"
+  },
+  {
+    "id": 19,
+    "name": "RabbitMQ",
+    "url": "rabbitmq",
+    "categorie": "Backend"
+  },
+  {
+    "id": 20,
+    "name": "OpenResty",
+    "url": "openresty",
+    "categorie": "Backend"
+  },
+  {
+    "id": 21,
+    "name": "Angular",
+    "url": "angular",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 22,
+    "name": "AngularJS",
+    "url": "angularjs",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 23,
+    "name": "Babel",
+    "url": "babeljs",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 24,
+    "name": "Backbone.js",
+    "url": "backbonejs",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 25,
+    "name": "Bootstrap",
+    "url": "bootstrap",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 26,
+    "name": "Bulma",
+    "url": "bulma",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 27,
+    "name": "CSS3",
+    "url": "css3",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 28,
+    "name": "Ember",
+    "url": "ember",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 29,
+    "name": "GTK",
+    "url": "GTK",
+    "categorie": "Frontend"
+  },
+  {
+    "i": 30,
+    "name": "Gulp",
+    "url": "gulp",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 31,
+    "name": "HTML5",
+    "url": "html5",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 32,
+    "name": "Materialize",
+    "url": "materialize",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 33,
+    "name": "Pug",
+    "url": "pug",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 34,
+    "name": "Qt",
+    "url": "Qt",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 35,
+    "name": "React",
+    "url": "react",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 36,
+    "name": "Redux",
+    "url": "redux",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 37,
+    "name": "Sass",
+    "url": "sass",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 38,
+    "name": "Swelte",
+    "url": "svelte",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 39,
+    "name": "Tailwind CSS",
+    "url": "tailwindcss",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 40,
+    "name": "Vue.js",
+    "url": "vuejs",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 41,
+    "name": "Webpack",
+    "url": "webpack",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 42,
+    "name": "WxWidgets",
+    "url": "wxwidgets",
+    "categorie": "Frontend"
+  },
+  {
+    "id": 43,
+    "name": "Amazon Web Services",
+    "url": "amazonwebservice",
+    "categorie": "DevOps"
+  },
+  {
+    "id": 44,
+    "name": "Bash",
+    "url": "bash",
+    "categorie": "DevOps"
+  },
+  {
+    "id": 45,
+    "name": "CircleCI",
+    "url": "circleci",
+    "categorie": "DevOps"
+  },
+  {
+    "id": 46,
+    "name": "Docker",
+    "url": "docker",
+    "categorie": "DevOps"
+  },
+  {
+    "id": 47,
+    "name": "Google Cloud Platform",
+    "url": "googlecloud",
+    "categorie": "DevOps"
+  },
+  {
+    "id": 48,
+    "name": "Jenkins",
+    "url": "jenkins",
+    "categorie": "DevOps"
+  },
+  {
+    "id": 49,
+    "name": "Kubernetes",
+    "url": "kubernetes",
+    "categorie": "DevOps"
+  },
+  {
+    "id": 50,
+    "name": "Microsoft Azure",
+    "url": "microsoftazure",
+    "categorie": "DevOps"
+  },
+  {
+    "id": 51,
+    "name": "Travis CI",
+    "url": "travisci",
+    "categorie": "DevOps"
+  },
+  {
+    "id": 52,
+    "name": "Vagrant",
+    "url": "vagrantup",
+    "categorie": "DevOps"
+  },
+  {
+    "id": 53,
+    "name": "Cassandra",
+    "url": "cassandra",
+    "categorie": "Database"
+  },
+  {
+    "id": 54,
+    "name": "CouchDB",
+    "url": "couchdb",
+    "categorie": "Database"
+  },
+  {
+    "id": 55,
+    "name": "CokcroachDB",
+    "url": "cockroachdb",
+    "categorie": "Database"
+  },
+  {
+    "id": 56,
+    "name": "Elasticsearch",
+    "url": "elasticsearch",
+    "categorie": "Database"
+  },
+  {
+    "id": 57,
+    "name": "Hive",
+    "url": "hive",
+    "categorie": "Database"
+  },
+  {
+    "id": 58,
+    "name": "MariaDB",
+    "url": "mariadb",
+    "categorie": "Database"
+  },
+  {
+    "id": 59,
+    "name": "MongoDB",
+    "url": "mongodb",
+    "categorie": "Database"
+  },
+  {
+    "id": 60,
+    "name": "Microsoft SQL Server",
+    "url": "microsoftsqlserver",
+    "categorie": "Database"
+  },
+  {
+    "id": 61,
+    "name": "MySQL",
+    "url": "mysql",
+    "categorie": "Database"
+  },
+  {
+    "id": 62,
+    "name": "Oracle",
+    "url": "oracle",
+    "categorie": "Database"
+  },
+  {
+    "id": 63,
+    "name": "PostgreSQL",
+    "url": "postgresql",
+    "categorie": "Database"
+  },
+  {
+    "id": 64,
+    "name": "Redis",
+    "url": "redis",
+    "categorie": "Database"
+  },
+  {
+    "id": 65,
+    "name": "SQLite",
+    "url": "sqlite",
+    "categorie": "Database"
+  },
+  {
+    "id": 66,
+    "name": "Realm",
+    "url": "realm",
+    "categorie": "Database"
+  },
+  {
+    "id": 67,
+    "name": "C",
+    "url": "c",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 68,
+    "name": "C++",
+    "url": "cplusplus",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 69,
+    "name": "C#",
+    "url": "csharp",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 70,
+    "name": "Clojure",
+    "url": "clojure",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 71,
+    "name": "Go",
+    "url": "go",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 72,
+    "name": "Java",
+    "url": "java",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 73,
+    "name": "JavaScript",
+    "url": "javascript",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 74,
+    "name": "Objective-C",
+    "url": "objectivec",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 75,
+    "name": "Perl",
+    "url": "perl",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 76,
+    "name": "PHP",
+    "url": "php",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 77,
+    "name": "Python",
+    "url": "python",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 78,
+    "name": "Ruby",
+    "url": "ruby",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 79,
+    "name": "Rust",
+    "url": "rust",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 80,
+    "name": "Scala",
+    "url": "scala",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 81,
+    "name": "Swift",
+    "url": "swift",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 82,
+    "name": "TypeScript",
+    "url": "typescript",
+    "categorie": "Programming Languages"
+  },
+  {
+    "id": 83,
+    "name": "CodeIgniter",
+    "url": "codeigniter",
+    "categorie": "Framework"
+  },
+  {
+    "id": 84,
+    "name": "Django",
+    "url": "django",
+    "categorie": "Framework"
+  },
+  {
+    "id": 85,
+    "name": "DotNet",
+    "url": "dotnet",
+    "categorie": "Framework"
+  },
+  {
+    "id": 86,
+    "name": "Electron",
+    "url": "electron",
+    "categorie": "Framework"
+  },
+  {
+    "id": 87,
+    "name": "Laravel",
+    "url": "laravel",
+    "categorie": "Framework"
+  },
+  {
+    "id": 88,
+    "name": "Pocoo",
+    "url": "pocooflask",
+    "categorie": "Framework"
+  },
+  {
+    "id": 89,
+    "name": "Ruby on Rails",
+    "url": "rails",
+    "categorie": "Framework"
+  },
+  {
+    "id": 90,
+    "name": "Symfony",
+    "url": "symfony",
+    "categorie": "Framework"
+  },
+  {
+    "id": 91,
+    "name": "Quasar",
+    "url": "quasar",
+    "categorie": "Framework"
+  }
+]

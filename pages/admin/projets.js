@@ -13,29 +13,24 @@ export default function Projets() {
   const [chosedProject, setChosedProject] = useState({});
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ["generalInfos"],
+    queryKey: ["projects"],
     queryFn: async () => {
       const projectData = await fetch(
         "http://localhost:3000/projects/" + user.token
       );
       const res = projectData.json();
-      console.log(res);
-
       return res;
     },
   });
 
-  console.log(data);
-
   const deleteMutation = useMutation({
-    mutationFn: (id) => {
-      console.log("id", id);
-      fetch(`${BACKEND_ADDRESS}/projects/delete/${id}`, {
+    mutationFn: async (id) => {
+      const data = await fetch(`${BACKEND_ADDRESS}/projects/delete/${id}`, {
         method: "DELETE",
       });
+      return data;
     },
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["projects"] }),
   });
 
   if (isLoading) return "Chargement...";

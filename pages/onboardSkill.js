@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 
 const containerVariants = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -17,24 +18,30 @@ const containerVariants = {
 
 export default function OnboardSkill() {
   const router = useRouter();
-
+  const queryClient = useQueryClient();
   const user = useSelector((state) => state.user.value);
 
   const [selectedSkills, setSelectedSkills] = useState([]);
 
   const submitSkills = () => {
-    const body = selectedSkills.map((e) => (e = e.name));
-    console.log(body);
-    fetch("http://localhost:3000/skills/create/" + user.token, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ skills: body }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    addMutation.mutate();
   };
+
+  const addMutation = useMutation({
+    mutationFn: async () => {
+      const body = selectedSkills.map((e) => (e = e.name));
+      const data = await fetch(
+        "http://localhost:3000/skills/create/" + user.token,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ skills: body }),
+        }
+      );
+      return data;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["skills"] }),
+  });
 
   const addSkill = (skill) => {
     let skillFind = selectedSkills.find((e) => e.name === skill.name);
