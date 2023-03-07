@@ -107,7 +107,7 @@ export default function FormUpdateExperience({ closeModal }) {
               className="form-control"
               id="start_date"
               value={form.startMonthYear}
-              name="startDate"
+              name="startMonthYear"
               onChange={(e) => {
                 handleChange(e);
               }}
@@ -121,7 +121,7 @@ export default function FormUpdateExperience({ closeModal }) {
               type="month"
               className="form-control"
               value={form.endMonthYear}
-              id="end_date"
+              id="endMonthYear"
               name="endDate"
               onChange={(e) => {
                 handleChange(e);
