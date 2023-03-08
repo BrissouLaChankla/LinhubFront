@@ -147,7 +147,7 @@ export default function ProjectFormUpdate({ id }) {
             }}
           />
         </div>
-        <div>
+        <div className="mt-5 d-flex justify-content-between">
           <button
             type="button"
             className="btn btn-secondary"

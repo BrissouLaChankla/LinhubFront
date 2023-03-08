@@ -17,16 +17,10 @@ const BACKEND_ADDRESS = "http://localhost:3000";
 
 
 export default function Register() {
-  const token = useSelector(state => state.user.value.token);
   const dispatch = useDispatch();
   const router = useRouter();
 
-// Redirect if logged in
-    useEffect(() => {
-      if (token) {
-        router.push('/admin'); 
-      }
-    }, [token]);
+ 
 
   const [inputValue, setInputValue] = useState({
     signUpEmail: "",

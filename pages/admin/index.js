@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import Input from "@/components/Input";
+import { Trash } from "react-bootstrap-icons";
 
 const BACKEND_ADDRESS = "http://localhost:3000";
 
@@ -192,9 +193,10 @@ const Admin = () => {
   const mySkills = skillsData.data.data[0]?.name.map((e, i) => (
     <span
       key={i}
-      className="badge rounded-pill px-3 py-2 text-bg-primary"
+      className={`${styles.deletable} badge position-relative rounded-pill px-3 py-2 text-bg-primary`}
       onClick={() => deleteMutation.mutate(e)}
     >
+      <Trash className={styles.deleteIcon} />
       {e}
     </span>
   ));
@@ -202,9 +204,11 @@ const Admin = () => {
   const myLanguages = languagesData.data.data.map((e, i) => (
     <span
       key={i}
-      className="badge rounded-pill px-3 py-2 text-bg-primary mb-2"
+      className={`${styles.deletable} badge position-relative rounded-pill px-3 py-2 text-bg-primary mb-2`}
       onClick={() => deleteLanguageMutation.mutate(e._id)}
     >
+      <Trash className={styles.deleteIcon} />
+
       {e.name} - {e.proficiency}
     </span>
   ));
@@ -212,26 +216,22 @@ const Admin = () => {
   const myWebsites = websiteData.data.data.map((e, i) => (
     <span
       key={i}
-      className="badge rounded-pill px-3 py-2 text-bg-primary mb-2"
+      className={`${styles.deletable} badge position-relative rounded-pill px-3 py-2 text-bg-primary mb-2`}
       onClick={() => deleteWebsiteMutation.mutate(e._id)}
     >
+      <Trash className={styles.deleteIcon} />
       {e.url}
     </span>
   ));
 
   return (
     <>
-      <h1 className="text-primary text-center">Admin 😳</h1>
-      <div>
-        <h2 className="text-center">
-          Bienvenue sur votre espace d'administration
-        </h2>
-      </div>
+      <h1 className="text-primary text-center mb-5 mt-4">Dashboard</h1>
       <div className={styles.banner}>
         <Banner />
       </div>
-      <div className="container text-center">
-        <h2 className="mb-3">Vos compétences</h2>
+      <div className="container">
+        <h2 className="mt-5">Vos compétences</h2>
         <div className="border shadow p-5 mb-5">
           <ReactSearchAutocomplete
             items={items}
@@ -241,60 +241,62 @@ const Admin = () => {
           />
           <div className="pt-5 d-flex flex-wrap gap-3">{mySkills}</div>
         </div>
-        <div className="container text-start row">
-          <h2 className="mb-3">Vos langues</h2>
-          <div className="border shadow p-5 mb-5 col-lg-6">
-            <div className="row">
-              <div className="col-lg-6">
-                <form onSubmit={handSubmit}>
-                  <Input
-                    type="text"
-                    name="valueLanguage"
-                    label="langue"
-                    required={true}
-                    value={valueLanguage}
-                    onChange={handleLanguage}
+        <div className="row">
+          <div className="col-lg-6">
+            <h2 className="mb-3">Vos langues</h2>
+            <div className="border shadow p-5 ">
+              <form onSubmit={handSubmit}>
+                <div className="d-flex gap-3 flex-wrap
+                ">
+
+                <Input
+                  type="text"
+                  className="flex-grow-1"
+                  name="valueLanguage"
+                  label="Langue"
+                  required={true}
+                  value={valueLanguage}
+                  onChange={handleLanguage}
                   />
-                  <Input
-                    type="text"
-                    name="valueLevel"
-                    label="Votre niveau"
-                    required={true}
-                    value={valueLevel}
-                    onChange={handleLanguage}
+                <Input
+                  className="flex-grow-1"
+                  type="text"
+                  name="valueLevel"
+                  label="Votre niveau"
+                  required={true}
+                  value={valueLevel}
+                  onChange={handleLanguage}
                   />
-                  <button type="submit" className="btn btn-outline-primary">
+                  </div>
+                <div className="text-end">
+                  <button type="submit" className="btn btn-sm btn-outline-primary">
                     Ajouter
                   </button>
-                </form>
-              </div>
-              <div className="col-lg-6">{myLanguages}</div>
+                </div>
+              </form>
+              {myLanguages}
             </div>
           </div>
-          <div className="col-lg-6 text-start">
-            <h2 className="mb-3">Vos websites</h2>
-            <div className="border shadow p-5 mb-5">
-              <div className="row">
-                <div className="col-lg-6">
-                  <form onSubmit={handSubmitWebsite}>
-                    <Input
-                      type="text"
-                      name="valueUrl"
-                      label="Url"
-                      value={valueUrl}
-                      onChange={handleWebsite}
-                      required={true}
-                    />
-                    <button type="submit" className="btn btn-outline-primary">
-                      Ajouter
-                    </button>
-                  </form>
+          <div className="col-lg-6 d-flex flex-column">
+            <h2 className="mb-3 mt-5 mt-lg-0">Vos sites internet</h2>
+            <div className="border shadow p-5 h-100">
+            <form onSubmit={handSubmitWebsite}>
+              <Input
+                type="text"
+                name="valueUrl"
+                label="Url"
+                value={valueUrl}
+                onChange={handleWebsite}
+                required={true}
+              />
+                <div className="text-end">
+                  <button type="submit" className="btn btn-outline-primary btn-sm">
+                    Ajouter
+                  </button>
                 </div>
-                <div className="col-lg-6">
-                  <div className="d-flex flex-wrap gap-3">{myWebsites}</div>
-                </div>
-              </div>
-            </div>
+            </form>
+            <div className="d-flex flex-wrap gap-3">{myWebsites}</div>
+          </div>
           </div>
         </div>
       </div>

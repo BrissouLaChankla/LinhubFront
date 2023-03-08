@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function Onboarding() {
   const [experienceValue, setExperienceValue] = useState(null);
-  const [jobValue, setJobValue] = useState(null);
+  const [jobValue, setJobValue] = useState("Développeur Fullstack");
   const user = useSelector((state) => state.user);
   const queryClient = useQueryClient();
 
@@ -53,7 +53,7 @@ export default function Onboarding() {
 
   return (
     <div className="container-fluid ">
-      <div className="row">
+      <div className="row align-items-center">
         <div className="col-lg-7 px-md-5">
           <h1 className="mb-2">Bienvenue parmi nous !</h1>
           <h3 className="mb-5">
@@ -67,9 +67,7 @@ export default function Onboarding() {
               aria-label=".form-select-lg example"
               onChange={(e) => setJobValue(e.target.value)}
             >
-              <option selected hidden value="" disabled>
-                Ahou! Ahou!
-              </option>
+              
               <option value="Développeur Fullstack">
                 Développeur Fullstack
               </option>
@@ -83,8 +81,8 @@ export default function Onboarding() {
           <div>
             <h3 className="mb-4">Quelle est votre expérience ?</h3>
             <div className="d-flex justify-content-between mb-3">
-              {experiences.map((experience) => (
-                <button
+              {experiences.map((experience,i) => (
+                <button key={i}
                   type="button"
                   className={
                     "btn btn-outline-primary rounded d-flex flex-column justify-content-center align-items-center p-4 w-25" +

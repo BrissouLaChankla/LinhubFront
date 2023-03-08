@@ -167,7 +167,7 @@ export default function FormationFormUpdate({ closeModal }) {
             }}
           />
         </div>
-        <div>
+        <div className="d-flex justify-content-between mt-5">
           <button
             type="button"
             className="btn btn-secondary"

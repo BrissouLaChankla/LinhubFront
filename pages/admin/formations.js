@@ -75,7 +75,7 @@ export default function Formation() {
     <div className="container">
       <div className="row">
         <div>
-          <h1 className="text-primary mb-5 text-center">
+          <h1 className="text-primary mb-5 mt-4 text-center">
             Toutes mes formations
           </h1>
         </div>

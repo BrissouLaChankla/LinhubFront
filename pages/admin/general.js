@@ -150,7 +150,7 @@ export default function GeneralInfos() {
                 width={900}
                 height={220}
               />
-              <PencilFill className={styles.editPen} />
+              <PencilFill className={`${styles.editPen} pe-none`} />
             </div>
             <div
               className="position-absolute bottom-0 start-0"
@@ -166,7 +166,7 @@ export default function GeneralInfos() {
                   height={150}
                   alt="Photo de profile"
                 />
-                <PencilFill className={styles.editPen} />
+                <PencilFill className={`${styles.editPen} pe-none`} />
               </div>
             </div>
           </div>

@@ -4,17 +4,10 @@ import { logout } from "../../reducers/user";
 import { useDispatch } from "react-redux";
 import logo from "@/public/logos/logo.png"
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useState } from "react";
 
 function AdminNavbar() {
   const dispatch = useDispatch();
-  const router = useRouter();
-
-  const handleLogout = () => {
-    router.push("/");
-    dispatch(logout());
-  };
 
   const [currentLink, setCurrentLink] = useState("");
 
@@ -104,7 +97,7 @@ function AdminNavbar() {
                 <Link
                   className="dropdown-item"
                   href="#"
-                  onClick={() => handleLogout()}
+                  onClick={() => dispatch(logout())}
                 >
                   Déconnexion
                 </Link>

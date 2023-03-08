@@ -24,8 +24,7 @@ function Navbar() {
                             <a className={(activeClass == "A propos") ? "text-primary nav-link me-4" : " nav-link me-4"} href="#about" onClick={(e) => setActiveClass(e.target.textContent)}>A propos</a>
                             <a className={(activeClass == "Tarif") ? "text-primary nav-link me-4" : " nav-link me-4"} href="#pricing" onClick={(e) => setActiveClass(e.target.textContent)}>Tarif</a>
                             <a className={(activeClass == "FAQ") ? "text-primary nav-link me-4" : " nav-link me-4"} href="#faq" onClick={(e) => setActiveClass(e.target.textContent)}>FAQ</a>
-                            <a className={(activeClass == "Contact") ? "text-primary nav-link me-3" : " nav-link me-3"} href="#contact" onClick={(e) => setActiveClass(e.target.textContent)}>Contact</a>
-                            <span className="ms-2 me-3 d-none d-lg-block">|</span>
+                            <a className={(activeClass == "Contact") ? "text-primary nav-link me-3" : " nav-link me-4"} href="#contact" onClick={(e) => setActiveClass(e.target.textContent)}>Contact</a>
                             {
                                 token ?
                                     <Link href="/admin" className="btn btn-primary btn-sm mt-2 mt-lg-0">Dashboard admin</Link>

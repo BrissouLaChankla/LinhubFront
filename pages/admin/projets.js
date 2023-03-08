@@ -72,7 +72,7 @@ export default function Projets() {
     <div className="container">
       <div className="row">
         <div>
-          <h1 className="text-primary mb-5 text-center">Tous mes projets</h1>
+          <h1 className="text-primary mb-5 mt-4 text-center">Tous mes projets</h1>
         </div>
         <div>
           <button

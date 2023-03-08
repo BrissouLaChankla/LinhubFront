@@ -54,7 +54,7 @@ export default function FormUpdateExperience({ closeModal }) {
       <div className="mx-3 my-3">
         <div className="mb-3">
           <label htmlFor="experience_company" className="form-label">
-            Nom de la compagnie
+            Nom de l'entreprise
           </label>
           <input
             type="text"
@@ -159,7 +159,7 @@ export default function FormUpdateExperience({ closeModal }) {
             }}
           />
         </div>
-        <div>
+        <div className="mt-5 d-flex justify-content-between">
           <button
             type="button"
             className="btn btn-secondary"

@@ -44,7 +44,7 @@ export default function Experience() {
   const myExperiences = data?.data.map((e, i) => (
     <div
       key={i}
-      className="col-12 flex-fill col-lg-3 d-flex flex-column card text-white bg-secondary mb-3 mx-2 btn"
+      className="col-lg-4  card text-white bg-secondary mb-3 mx-2 btn"
     >
       <div className="d-flex justify-content-end">
         <button
@@ -78,7 +78,7 @@ export default function Experience() {
     <div className="container">
       <div className="row">
         <div>
-          <h1 className="text-primary mb-5 text-center">
+          <h1 className="text-primary mb-5 mt-4 text-center ">
             Toutes mes expériences
           </h1>
         </div>
@@ -93,7 +93,7 @@ export default function Experience() {
           </button>
           <LargeModalRegisterExperience />
         </div>
-        <div className="row justify-content-between ">{myExperiences}</div>
+        <div className="row">{myExperiences}</div>
       </div>
       <LargeModalUpdateExperience experience={chosedExperience} />
     </div>

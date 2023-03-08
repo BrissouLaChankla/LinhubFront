@@ -156,7 +156,7 @@ export default function ApiPortofolio() {
                 />
               </div>
             ))}
-            {/* <div className="col-12 flex-fill col-lg-2 col-md-4 vs d-flex flex-column mb-3 mx-2 ">
+            <div className="col-12 flex-fill col-lg-2 col-md-4 vs d-flex flex-column mb-3 mx-2 ">
               <CvBasicTheme />
             </div>
             <div className="col-12 flex-fill col-lg-2 col-md-4 d-flex flex-column mb-3 mx-2 ">
@@ -179,7 +179,7 @@ export default function ApiPortofolio() {
                 style={{ width: "250px", height: "250px" }}
                 alt="no-image"
               />
-            </div> */}
+            </div>
           </div>
         </div>
         <div className="text-end mt-4">
