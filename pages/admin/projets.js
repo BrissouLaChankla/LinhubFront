@@ -41,15 +41,17 @@ export default function Projets() {
       key={i}
       className="col-12 row-cols-1 flex-fill col-lg-3 d-flex flex-column card text-white bg-secondary mb-3 mx-2 btn"
     >
-      <button
-        type="button"
-        className="btn-close btn-close-white justify-content-end flex-fill "
-        aria-label="Close"
-        onClick={() => {
-          console.log("click");
-          deleteMutation.mutate(e._id);
-        }}
-      />
+      <div className="d-flex justify-content-end">
+        <button
+          type="button"
+          className="btn-close btn-close-white "
+          aria-label="Close"
+          onClick={() => {
+            console.log("click");
+            deleteMutation.mutate(e._id);
+          }}
+        />
+      </div>
       <div
         className=" ms-3 "
         type="submit"

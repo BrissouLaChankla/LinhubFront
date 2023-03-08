@@ -1,13 +1,12 @@
 import LargeModalRegisterExperience from "@/components/admin/largeModalRegisterExperience";
 import LargeModalUpdateExperience from "@/components/admin/largeModalUpdateExperience";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 
 const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function Experience() {
-  const dispatch = useDispatch();
   const queryClient = useQueryClient();
 
   const user = useSelector((state) => state.user.value);
