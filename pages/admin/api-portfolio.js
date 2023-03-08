@@ -5,15 +5,20 @@ import noImage from "../../public/no_image.jpeg";
 import { useSelector } from "react-redux";
 import tooltip from "@/styles/TooltipApiPortofolio.module.scss";
 
+// Define the backend address
 const BACKEND_ADDRESS = "http://localhost:3000";
 
+// Define the component
 export default function ApiPortofolio() {
+  // Define state variables for showing/hiding the user's token, and for storing which image(s) the user has clicked on
   const [tokenShown, setTokenShown] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [clickedCV, setClickedCV] = useState(false);
 
+  // Get the user object from the Redux store
   const user = useSelector((state) => state.user.value);
 
+  // Define some placeholder images for the portfolio templates and CV generator
   const imagesForTemplate = [
     { src: noImage },
     { src: noImage },
@@ -27,14 +32,15 @@ export default function ApiPortofolio() {
     { src: noImage },
   ];
 
+  // Define a function to show/hide the user's token
   const toggleToken = () => {
     setTokenShown(!tokenShown);
   };
-
+  // Define a function to handle when the user clicks on an image for the portfolio templates
   const handleClick = (i) => {
     setClicked(i);
   };
-
+  // Define a function to handle when the user clicks on an image for the CV generator
   const handleClickForCV = (e) => {
     setClickedCV(e);
   };
