@@ -4,6 +4,7 @@ import Image from "next/image";
 import noImage from "../../public/no_image.jpeg";
 import { useSelector } from "react-redux";
 import tooltip from "@/styles/TooltipApiPortofolio.module.scss";
+import CvBasicTheme from "@/components/admin/CvBasicTheme";
 
 // Define the backend address
 const BACKEND_ADDRESS = "http://localhost:3000";
@@ -155,6 +156,30 @@ export default function ApiPortofolio() {
                 />
               </div>
             ))}
+            {/* <div className="col-12 flex-fill col-lg-2 col-md-4 vs d-flex flex-column mb-3 mx-2 ">
+              <CvBasicTheme />
+            </div>
+            <div className="col-12 flex-fill col-lg-2 col-md-4 d-flex flex-column mb-3 mx-2 ">
+              <Image
+                src={noImage}
+                style={{ width: "250px", height: "250px" }}
+                alt="no-image"
+              />
+            </div>
+            <div className="col-12 flex-fill col-lg-2 col-md-4 d-flex flex-column  mb-3 mx-2 ">
+              <Image
+                src={noImage}
+                style={{ width: "250px", height: "250px" }}
+                alt="no-image"
+              />
+            </div>
+            <div className="col-12 flex-fill col-lg-2 col-md-4 d-flex flex-column mb-3 mx-2 ">
+              <Image
+                src={noImage}
+                style={{ width: "250px", height: "250px" }}
+                alt="no-image"
+              />
+            </div> */}
           </div>
         </div>
         <div className="text-end mt-4">
