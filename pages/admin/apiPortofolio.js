@@ -3,19 +3,17 @@ import { Eye, QuestionCircle } from "react-bootstrap-icons";
 import Image from "next/image";
 import noImage from "../../public/no_image.jpeg";
 import { useSelector } from "react-redux";
+import tooltip from "@/styles/TooltipApiPortofolio.module.scss";
 
 const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function ApiPortofolio() {
   const [tokenShown, setTokenShown] = useState(false);
+
   const user = useSelector((state) => state.user.value);
 
   const toggleToken = () => {
     setTokenShown(!tokenShown);
-  };
-
-  const topPopover = () => {
-    <div>hello</div>;
   };
 
   return (
@@ -66,15 +64,14 @@ export default function ApiPortofolio() {
           <div className="p-2 ">
             <h5>Sélectionnez votre template</h5>
           </div>
-          <button
-            type="button"
-            className="btn circle"
-            data-bs-toggle="popover"
-            data-bs-placement="top"
-            onClick={() => topPopover()}
-          >
+          <span className={tooltip.tooltip}>
+            <span className={tooltip.tooltiptext}>
+              Si vous ne voulez pas perdre de temps à réaliser votre site
+              portfolio vous même, vous pouvez sélectionner un de nos modèles
+              qui utiliseront vos données Linhub.
+            </span>
             <QuestionCircle />
-          </button>
+          </span>
         </div>
         <div className="container">
           <div className="row">
