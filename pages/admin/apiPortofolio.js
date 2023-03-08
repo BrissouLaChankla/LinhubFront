@@ -42,17 +42,17 @@ export default function ApiPortofolio() {
       <div className="col-12 flex-fill col-lg-6 col-md-12">
         <h5>Vos Endpoints</h5>
         <div className="form-control my-2">
-          <a href="#" class="link">
+          <a href="#" className="link">
             https://api.linhub.fr/get/allInfos
           </a>
         </div>
         <div className="form-control my-2">
-          <a href="#" class="link">
+          <a href="#" className="link">
             https://api.linhub.fr/get/allInfos
           </a>
         </div>
         <div className="form-control my-2">
-          <a href="#" class="link">
+          <a href="#" className="link">
             https://api.linhub.fr/get/allInfos
           </a>
         </div>
