@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "@/reducers/user";
 import Image from "next/image";
 import noImage from "../public/no_image.jpeg";
@@ -11,9 +11,19 @@ import styles from "@/styles/onboarding.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+
+
 export default function Register() {
+  const token = useSelector(state => state.user.value.token);
   const dispatch = useDispatch();
   const router = useRouter();
+
+// Redirect if logged in
+    useEffect(() => {
+      if (token) {
+        router.push('/admin'); 
+      }
+    }, [token]);
 
   const [inputValue, setInputValue] = useState({
     signUpEmail: "",
