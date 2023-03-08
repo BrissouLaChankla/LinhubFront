@@ -10,6 +10,9 @@ import Input from "@/components/Input";
 import styles from "@/styles/onboarding.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useMutation } from "@tanstack/react-query";
+
+const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -30,41 +33,49 @@ export default function Register() {
       ...prev,
       [name]: value,
     }));
-    console.log(inputValue);
   };
 
   const handleSignUp = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:3000/users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        firstname: signUpFirstname,
-        lastname: signUpLastname,
-        email: signUpEmail,
-        password: signUpPassword,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        data.result &&
+    addMutation.mutate({
+      firstname: signUpFirstname,
+      lastname: signUpLastname,
+      email: signUpEmail,
+      password: signUpPassword,
+    });
+  };
+
+  const addMutation = useMutation(
+    async (data) => {
+      const res = await fetch(`${BACKEND_ADDRESS}/users/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      return json;
+    },
+    {
+      onSuccess: (data) => {
+        if (data.result) {
           dispatch(
             login({
               token: data.token,
               email: signUpEmail,
             })
           );
-        setInputValue({
-          signUpEmail: "",
-          signUpPassword: "",
-          signUpLastname: "",
-          signUpFirstname: "",
-        });
-        router.push("/onboarding");
-      });
-  };
+          setInputValue({
+            signUpEmail: "",
+            signUpPassword: "",
+            signUpLastname: "",
+            signUpFirstname: "",
+          });
+          router.push("/onboarding");
+        }
+      },
+    }
+  );
 
   return (
     <div className="container-fluid px-md-5">
@@ -152,7 +163,6 @@ export default function Register() {
       </div>
 
       <div className="col-lg-6">
-
         <Image
           src={noImage}
           alt="no-image"

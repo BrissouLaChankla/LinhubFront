@@ -10,6 +10,9 @@ import styles from "@/styles/onboarding.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import { useMutation } from "@tanstack/react-query";
+
+const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function Login() {
   const [inputValue, setInputValue] = useState({
@@ -27,23 +30,25 @@ export default function Login() {
       ...prev,
       [name]: value,
     }));
-    console.log(inputValue);
   };
 
   const handleSignIn = (e) => {
     e.preventDefault();
+    addMutation.mutate({ email: signInEmail, password: signInPassword });
+  };
 
-    fetch("http://localhost:3000/users/signin", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: signInEmail,
-        password: signInPassword,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+  const addMutation = useMutation(
+    async (data) => {
+      const res = await fetch(`${BACKEND_ADDRESS}/users/signin`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      return json;
+    },
+    {
+      onSuccess: (data) => {
         if (data.result) {
           dispatch(
             login({
@@ -57,8 +62,9 @@ export default function Login() {
           });
         }
         router.push("/admin");
-      });
-  };
+      },
+    }
+  );
 
   return (
     <div className="container-fluid px-md-5">

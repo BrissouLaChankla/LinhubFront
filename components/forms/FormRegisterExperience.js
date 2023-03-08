@@ -122,7 +122,7 @@ export default function FormUpdateExperience({ closeModal }) {
               className="form-control"
               value={form.endMonthYear}
               id="endMonthYear"
-              name="endDate"
+              name="endMonthYear"
               onChange={(e) => {
                 handleChange(e);
               }}
