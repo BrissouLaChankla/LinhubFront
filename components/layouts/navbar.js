@@ -2,10 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/logos/logo.png"
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function Navbar() {
     const [activeClass, setActiveClass] = useState("");
+    const token = useSelector(state => state.user.value.token);
 
+    
     return (
         <header className="p-1 shadow-sm position-fixed top-0 left-0 w-100 bg-white z-3" data-bs-theme="light">
             <nav className="navbar navbar-expand-lg ">
@@ -23,8 +26,15 @@ function Navbar() {
                             <a className={(activeClass == "FAQ") ? "text-primary nav-link me-4" : " nav-link me-4"} href="#faq" onClick={(e) => setActiveClass(e.target.textContent)}>FAQ</a>
                             <a className={(activeClass == "Contact") ? "text-primary nav-link me-3" : " nav-link me-3"} href="#contact" onClick={(e) => setActiveClass(e.target.textContent)}>Contact</a>
                             <span className="ms-2 me-3 d-none d-lg-block">|</span>
-                            <Link href="/login" className="btn btn-outline-primary btn-sm mt-2 mt-lg-0">Connexion</Link>
-                            <Link href="/register" className="btn btn-primary btn-sm">Inscription</Link>
+                            {
+                                token ?
+                                    <Link href="/admin" className="btn btn-primary btn-sm mt-2 mt-lg-0">Dashboard admin</Link>
+                                 :
+                                 <>
+                                    <Link href="/login" className="btn btn-outline-primary btn-sm mt-2 mt-lg-0">Connexion</Link>
+                                     <Link href="/register" className="btn btn-primary btn-sm">Inscription</Link>
+                                 </> 
+                            }
                         </div>
                     </div>
                 </div>
