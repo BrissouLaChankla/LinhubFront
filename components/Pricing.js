@@ -14,7 +14,7 @@ function Pricing(props) {
             </div>
             <div className="my-5 px-3">
                 {props.advantages.map((e,i) =>
-                <div className="mb-2">
+                <div className="mb-2" key={i}>
                     {
                         e.isIn ? <Check className="text-success" /> :  <X className="text-danger" /> 
                     }

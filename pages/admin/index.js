@@ -236,7 +236,7 @@ const Admin = () => {
           <ReactSearchAutocomplete
             items={items}
             onSelect={handleOnSelect}
-            styling={{ zIndex: 4 }}
+            styling={{ zIndex: 2 }}
             autoFocus
           />
           <div className="pt-5 d-flex flex-wrap gap-3">{mySkills}</div>

@@ -4,23 +4,33 @@ import noImage from "../public/no_image.jpeg";
 import google from "../public/google.svg";
 import linkedin from "../public/linkedin.svg";
 import github from "../public/github.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "@/components/Input";
 import styles from "@/styles/onboarding.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
 
 const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function Login() {
+  const token = useSelector(state => state.user.value.token);
+
   const [inputValue, setInputValue] = useState({
     signInEmail: "",
     signInPassword: "",
   });
   const router = useRouter();
   const dispatch = useDispatch();
+
+  // Redirect if logged in
+  useEffect(() => {
+    if (token) {
+      router.push('/admin'); 
+    }
+  }, [token]);
+
 
   const { signInEmail, signInPassword } = inputValue;
 
