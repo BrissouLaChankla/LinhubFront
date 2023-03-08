@@ -189,7 +189,7 @@ const Admin = () => {
   if (skillsData.error || languagesData.error || websiteData.error)
     return "Aïe, il y a eu un pb: " + error.message;
 
-  const mySkills = skillsData.data.data[0].name.map((e, i) => (
+  const mySkills = skillsData.data.data[0]?.name.map((e, i) => (
     <span
       key={i}
       className="badge rounded-pill px-3 py-2 text-bg-primary"
