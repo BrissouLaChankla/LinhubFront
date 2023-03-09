@@ -8,7 +8,9 @@ import { ChevronRight } from "react-bootstrap-icons";
 
 export default function Onboarding() {
   return (
-    <div>
+    <div className="container mt-5">
+      <div className="row align-items-center">
+
       <div className="col-lg-6">
         <h1 className="mb-5">Quelle est votre situation ?</h1>
         <div>
@@ -44,11 +46,17 @@ export default function Onboarding() {
           </Link>
         </div>
       </div>
+      <div className="col-lg-6">
+
       <Image
-        src={Scooter}
-        alt="Scooter"
-        className={`d-none d-lg-block ${styles.halfBg}`}
-      />
+            src={Scooter}
+            width={600}
+            className={`d-none img-fluid m-auto d-lg-block`}
+            alt="Scooter"
+          />
+      </div>
+      </div>
+
     </div>
   );
 }

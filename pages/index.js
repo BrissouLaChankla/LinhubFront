@@ -404,7 +404,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="container m-section position-relative">
+      <div className="container m-section position-relative mb-5">
         <span className={styles.anchor} id="contact"></span>
         <div className="mb-3 text-start text-md-center ">
           <h2 className="mb-3">On reste en contact ?</h2>

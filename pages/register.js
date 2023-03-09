@@ -79,7 +79,7 @@ export default function Register() {
   );
 
   return (
-    <div className="container-fluid px-md-5">
+    <div className="container-fluid px-md-5 mt-5">
       <div className="row">
         <div className="col-lg-6">
           <div className="d-flex justify-content-between align-items-center">
@@ -161,15 +161,17 @@ export default function Register() {
             </div>
           </form>
         </div>
+      <div className="col-lg-6 px-5 align-items-center d-flex">
+      <Image
+            src={BigProject}
+            width={600}
+            className={`d-none img-fluid m-auto d-lg-block`}
+            alt="Project"
+          />
+  
+      </div>
       </div>
 
-      <div className="col-lg-6">
-        <Image
-          src={BigProject}
-          alt="BigProject"
-          className={`d-none d-lg-block ${styles.halfBg}`}
-        />
-      </div>
     </div>
   );
 }
