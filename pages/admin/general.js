@@ -182,7 +182,7 @@ export default function GeneralInfos() {
                 className="form-control"
                 ref={firstname}
                 id="firstname"
-                defaultValue={data?.res.firstname}
+                defaultValue={data.res.firstname}
               />
             </div>
             <div className="flex-grow-1 ">
@@ -194,7 +194,7 @@ export default function GeneralInfos() {
                 className="form-control"
                 ref={lastname}
                 id="lastname"
-                defaultValue={data?.res.lastname}
+                defaultValue={data.res.lastname}
               />
             </div>
           </div>
