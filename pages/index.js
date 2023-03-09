@@ -6,7 +6,7 @@ import Hero from "@/public/illustrations/hero.svg"
 import LaptopBear from "@/public/illustrations/laptop_bear.svg"
 import DashboardScreen from "@/public/illustrations/screenshots/dashboard_example.jpg"
 import Image from "next/image"
-import { Activity, ArrowRepeat, ArrowRightShort, ChatSquare, ChatSquareHeart, CheckCircle, Magic, Share, ShieldCheck, Stars, Stopwatch } from "react-bootstrap-icons"
+import { ArrowRepeat, ArrowRightShort, ChatSquareHeart, CheckCircle, Magic,  ShieldCheck, Stars, Stopwatch } from "react-bootstrap-icons"
 import styles from "@/styles/landing.module.scss"
 import BasicIllu from "@/public/illustrations/pricing/basic.png"
 import StandardIllu from "@/public/illustrations/pricing/standard.png"
@@ -298,16 +298,16 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="accordion"  id="accordionExample">
+        <div className="accordion"  id="faqAccordion">
           {
             faqs.map((e, i) =>
               <div className="accordion-item my-3 border-0 rounded-4" key={i}>
                 <h2 className="accordion-header" id={"heading" + i}>
-                  <button className="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target={"#collapse" + i} aria-expanded="false" aria-controls={"collapse" + i}>
+                  <button className="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#collapse" + i} aria-expanded="false" aria-controls={"collapse" + i}>
                     {e.title}
                   </button>
                 </h2>
-                <div id={"collapse" + i} className="accordion-collapse collapse " aria-labelledby={"heading" + i} data-bs-parent="#accordionExample">
+                <div id={"collapse" + i} className="accordion-collapse collapse " aria-labelledby={"heading" + i} data-bs-parent="#faqAccordion">
                   <div className="accordion-body">
                     <div className="row my-4 align-items-center">
                       <div className="col-md-3 text-center text-md-start">
