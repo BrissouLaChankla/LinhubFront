@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 
-const BACKEND_ADDRESS = "http://localhost:3000";
+const BACKEND_ADDRESS = "https://linhub-back.vercel.app";
 
 export default function Formation() {
   const queryClient = useQueryClient();
@@ -16,7 +16,7 @@ export default function Formation() {
     queryKey: ["formations"],
     queryFn: async () => {
       const formationData = await fetch(
-        "http://localhost:3000/education/" + user.token
+        "https://linhub-back.vercel.app/education/" + user.token
       );
       const res = formationData.json();
       console.log(res);

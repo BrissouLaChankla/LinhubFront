@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-const BACKEND_ADDRESS = "http://localhost:3000";
+const BACKEND_ADDRESS = "https://linhub-back.vercel.app";
 
 export default function ProjectFormUpdate({ id }) {
   const user = useSelector((state) => state.user.value);

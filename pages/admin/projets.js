@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 
-const BACKEND_ADDRESS = "http://localhost:3000";
+const BACKEND_ADDRESS = "https://linhub-back.vercel.app";
 
 export default function Projets() {
   const queryClient = useQueryClient();
@@ -16,7 +16,7 @@ export default function Projets() {
     queryKey: ["projects"],
     queryFn: async () => {
       const projectData = await fetch(
-        "http://localhost:3000/projects/" + user.token
+        "https://linhub-back.vercel.app/projects/" + user.token
       );
       const res = projectData.json();
       return res;

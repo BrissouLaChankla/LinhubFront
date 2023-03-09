@@ -7,7 +7,7 @@ import tooltip from "@/styles/TooltipApiPortofolio.module.scss";
 import { useRouter } from "next/router";
 
 // Define the backend address
-const BACKEND_ADDRESS = "http://localhost:3000";
+const BACKEND_ADDRESS = "https://linhub-back.vercel.app";
 
 // Define the component
 export default function ApiPortofolio() {

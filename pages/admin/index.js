@@ -9,7 +9,7 @@ import { useState } from "react";
 import Input from "@/components/Input";
 import { Trash } from "react-bootstrap-icons";
 
-const BACKEND_ADDRESS = "http://localhost:3000";
+const BACKEND_ADDRESS = "https://linhub-back.vercel.app";
 
 const Admin = () => {
   const queryClient = useQueryClient();
