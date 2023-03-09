@@ -1,6 +1,7 @@
 import { login } from "@/reducers/user";
 import Image from "next/image";
 import noImage from "../public/no_image.jpeg";
+import Project from "@/public/illustrations/project.svg";
 import google from "../public/google.svg";
 import linkedin from "../public/linkedin.svg";
 import github from "../public/github.svg";
@@ -15,7 +16,7 @@ import { useMutation } from "@tanstack/react-query";
 const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function Login() {
-  const token = useSelector(state => state.user.value.token);
+  const token = useSelector((state) => state.user.value.token);
 
   const [inputValue, setInputValue] = useState({
     signInEmail: "",
@@ -27,10 +28,9 @@ export default function Login() {
   // Redirect if logged in
   useEffect(() => {
     if (token) {
-      router.push('/admin'); 
+      router.push("/admin");
     }
   }, [token]);
-
 
   const { signInEmail, signInPassword } = inputValue;
 
@@ -144,9 +144,9 @@ export default function Login() {
         </div>
         <div className="col-lg-6">
           <Image
-            src={noImage}
+            src={Project}
             className={`d-none d-lg-block ${styles.halfBg}`}
-            alt="no-image"
+            alt="Project"
           />
         </div>
       </div>

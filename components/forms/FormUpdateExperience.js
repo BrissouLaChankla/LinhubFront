@@ -19,7 +19,16 @@ export default function FormUpdateExperience({ id }) {
   });
 
   useEffect(() => {
-    fetch("http://localhost:3000/experiences/" + id + "/" + user.token)
+    setForm({
+      company: "",
+      description: "",
+      location: "",
+      title: "",
+      startMonthYear: "",
+      endMonthYear: "",
+      typeOfContract: "",
+    });
+    fetch(BACKEND_ADDRESS + "/experiences/" + id + "/" + user.token)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

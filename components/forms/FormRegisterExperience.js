@@ -40,8 +40,20 @@ export default function FormUpdateExperience({ closeModal }) {
       );
       return data;
     },
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["experiences"] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["experiences"] });
+      setForm({
+        company: "",
+        degreeName: "",
+        description: "",
+        location: "",
+        locationString: "",
+        title: "",
+        startMonthYear: "",
+        endMonthYear: "",
+        typeOfContract: "",
+      });
+    },
   });
 
   return (
