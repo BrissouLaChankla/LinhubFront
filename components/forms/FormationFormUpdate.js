@@ -17,6 +17,15 @@ export default function FormationFormUpdate({ id }) {
   });
 
   useEffect(() => {
+    setForm({
+      schoolName: "",
+      degreeName: "",
+      fieldOfStudyName: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+      result: "",
+    });
     fetch("http://localhost:3000/education/" + id + "/" + user.token)
       .then((res) => res.json())
       .then((data) => {

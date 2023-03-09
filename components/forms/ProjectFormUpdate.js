@@ -17,7 +17,14 @@ export default function ProjectFormUpdate({ id }) {
   });
 
   useEffect(() => {
-    fetch("http://localhost:3000/projects/" + id + "/" + user.token)
+    setForm({
+      name: "",
+      description: "",
+      startDate: "",
+      endDate: "",
+      url: "",
+    });
+    fetch(BACKEND_ADDRESS + "/projects/" + id + "/" + user.token)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
