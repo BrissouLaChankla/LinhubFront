@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "@/reducers/user";
 import Image from "next/image";
 import noImage from "../public/no_image.jpeg";
+import BigProject from "@/public/illustrations/bigProject.svg";
 import google from "../public/google.svg";
 import linkedin from "../public/linkedin.svg";
 import github from "../public/github.svg";
@@ -14,13 +15,9 @@ import { useMutation } from "@tanstack/react-query";
 
 const BACKEND_ADDRESS = "http://localhost:3000";
 
-
-
 export default function Register() {
   const dispatch = useDispatch();
   const router = useRouter();
-
- 
 
   const [inputValue, setInputValue] = useState({
     signUpEmail: "",
@@ -168,8 +165,8 @@ export default function Register() {
 
       <div className="col-lg-6">
         <Image
-          src={noImage}
-          alt="no-image"
+          src={BigProject}
+          alt="BigProject"
           className={`d-none d-lg-block ${styles.halfBg}`}
         />
       </div>
