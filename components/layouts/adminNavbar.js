@@ -1,8 +1,20 @@
 import Link from "next/link";
-import { PersonCircle, FileEarmarkPerson, MortarboardFill, BriefcaseFill, GearFill, Gear, Briefcase, Mortarboard, FileEarmarkPersonFill, Lightning, LightningFill } from "react-bootstrap-icons";
+import {
+  PersonCircle,
+  FileEarmarkPerson,
+  MortarboardFill,
+  BriefcaseFill,
+  GearFill,
+  Gear,
+  Briefcase,
+  Mortarboard,
+  FileEarmarkPersonFill,
+  Lightning,
+  LightningFill,
+} from "react-bootstrap-icons";
 import { logout } from "../../reducers/user";
 import { useDispatch } from "react-redux";
-import logo from "@/public/logos/logo.png"
+import logo from "@/public/logos/logo.png";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -16,33 +28,33 @@ function AdminNavbar() {
       name: "Info. Générales",
       slug: "general",
       icon: <FileEarmarkPerson className="fs-2" />,
-      iconFill: <FileEarmarkPersonFill className="fs-2 text-primary" />
+      iconFill: <FileEarmarkPersonFill className="fs-2 text-primary" />,
     },
     {
       name: "Formations",
       slug: "formations",
       icon: <Mortarboard className="fs-2" />,
-      iconFill: <MortarboardFill className="fs-2 text-primary" />
+      iconFill: <MortarboardFill className="fs-2 text-primary" />,
     },
     {
       name: "Expériences Pro.",
       slug: "experiences",
       icon: <Briefcase className="fs-2 " />,
-      iconFill: <BriefcaseFill className="fs-2 text-primary" />
+      iconFill: <BriefcaseFill className="fs-2 text-primary" />,
     },
     {
       name: "Projets",
       slug: "projets",
       icon: <Lightning className="fs-2" />,
-      iconFill: <LightningFill className="fs-2 text-primary" />
+      iconFill: <LightningFill className="fs-2 text-primary" />,
     },
     {
       name: "API & Portfolio",
       slug: "api-portfolio",
       icon: <Gear className="fs-2" />,
-      iconFill: <GearFill className="fs-2 text-primary" />
-    }
-  ]
+      iconFill: <GearFill className="fs-2 text-primary" />,
+    },
+  ];
 
   return (
     <nav
@@ -50,8 +62,12 @@ function AdminNavbar() {
       data-bs-theme="light"
     >
       <div className="container">
-        <Link href="/admin" className="navbar-brand" onClick={() => setCurrentLink("")} >
-          <Image height={30} src={logo}></Image>
+        <Link
+          href="/admin"
+          className="navbar-brand"
+          onClick={() => setCurrentLink("")}
+        >
+          <Image height={30} alt="logo" src={logo}></Image>
         </Link>
         <div className="d-flex align-items-center order-lg-3 ">
           <button
@@ -110,20 +126,17 @@ function AdminNavbar() {
           id="navbarNavAltMarkup"
         >
           <div className="navbar-nav d-flex align-items-center">
-            {
-              links.map((e, i) =>
-                  <Link key={i}
-                    className="nav-link d-flex flex-column align-items-center gap-1 pe-3"
-                    href={"/admin/" + e.slug}
-                    onClick={() => setCurrentLink(e.name)}
-                  >
-                    {
-                      e.name === currentLink ? e.iconFill : e.icon
-                    }
-                    {e.name}
-                  </Link>
-              )
-            }
+            {links.map((e, i) => (
+              <Link
+                key={i}
+                className="nav-link d-flex flex-column align-items-center gap-1 pe-3"
+                href={"/admin/" + e.slug}
+                onClick={() => setCurrentLink(e.name)}
+              >
+                {e.name === currentLink ? e.iconFill : e.icon}
+                {e.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
