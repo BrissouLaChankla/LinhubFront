@@ -3,6 +3,11 @@ import Linkedin from "@/public/logos/LandingPage/Linkedin.svg";
 import Github from "@/public/logos/LandingPage/Github.svg";
 import Webflow from "@/public/logos/LandingPage/Webflow.svg";
 import Hero from "@/public/illustrations/hero.svg";
+import Businessman from "@/public/illustrations/businessman.svg";
+import Bicycle from "@/public/illustrations/bicycle.svg";
+import Flat from "@/public/illustrations/flat.svg";
+import Book from "@/public/illustrations/book.svg";
+
 import LaptopBear from "@/public/illustrations/laptop_bear.svg";
 import DashboardScreen from "@/public/illustrations/screenshots/dashboard_example.jpg";
 import Image from "next/image";
@@ -168,24 +173,24 @@ const faqs = [
     title:
       "Est-ce que Linhub garantit la sécurité et la confidentialité de mes données personnelles ?",
     body: "Oui, Linhub garantit la sécurité et la confidentialité de vos données personnelles. Vos informations sont stockées de manière sécurisée et ne sont accessibles que par vous-même. Linhub ne partage pas vos informations avec des tiers sans votre consentement.",
-    illustration: Hero,
+    illustration: Businessman,
   },
   {
     title: "Comment puis-je connecter mon compte LinkedIn à Linhub ?",
     body: "Pour connecter votre compte LinkedIn à Linhub, il vous suffit de créer un compte Linhub et de suivre les instructions de synchronisation. Une fois que vous aurez autorisé Linhub à accéder à votre compte LinkedIn, vos informations seront automatiquement synchronisées.",
-    illustration: Hero,
+    illustration: Book,
   },
   {
     title:
       "Est-ce que je peux personnaliser les modèles de portfolio, de CV et de signature proposés par Linhub ?",
     body: "Oui, vous pouvez personnaliser les modèles de portfolio, de CV et de signature proposés par Linhub. Vous pouvez modifier les couleurs, les polices, les images et les textes pour personnaliser votre présentation.",
-    illustration: Hero,
+    illustration: Bicycle,
   },
   {
     title:
       "Que se passe-t-il si j'ai des incohérences ou des erreurs entre mes différentes plateformes professionnelles ?",
     body: "Linhub surveille et met à jour automatiquement toutes vos plateformes professionnelles pour éviter les incohérences ou les erreurs. Si des incohérences sont détectées, Linhub vous avertira et vous proposera des solutions pour corriger les problèmes.",
-    illustration: Hero,
+    illustration: Flat,
   },
 ];
 
@@ -221,9 +226,9 @@ export default function Home() {
                 opacity: "50%",
               }}
             >
-              <Image src={Linkedin} width={70} alt="logo linkedin"></Image>
-              <Image src={Github} width={70} alt="logo github"></Image>
-              <Image src={Webflow} width={70} alt="logo webflow"></Image>
+              <Image src={Linkedin} width={70}></Image>
+              <Image src={Github} width={70}></Image>
+              <Image src={Webflow} width={70}></Image>
             </div>
             <Link href="/register" className="btn btn-primary">
               M'inscrire gratuitement
@@ -233,7 +238,6 @@ export default function Home() {
             <Image
               src={Hero}
               width={750}
-              alt="hero"
               className="img-fluid d-none d-lg-block"
             />
           </div>
@@ -281,7 +285,7 @@ export default function Home() {
             </p>
           </div>
           <div className="col-lg-7 d-none d-lg-block">
-            <Image src={LaptopBear} alt="laptobear" className="img-fluid" />
+            <Image src={LaptopBear} className="img-fluid" />
           </div>
         </div>
       </div>
@@ -289,7 +293,7 @@ export default function Home() {
       <div className="container m-section-sm">
         <div className="row align-items-center">
           <div className="col-lg-7">
-            <Glow3DImage image={DashboardScreen} alt="DashboardScreen" />
+            <Glow3DImage image={DashboardScreen} />
           </div>
           <div className="col-lg-5">
             <div className="ps-lg-5">
@@ -306,12 +310,14 @@ export default function Home() {
                 <div className="d-flex align-items-center mb-3">
                   <CheckCircle className="text-primary" />
                   <span className="ms-2 text-muted">
+                    {" "}
                     Renseignez vos informations
                   </span>
                 </div>
                 <div className="d-flex align-items-center mb-3">
                   <CheckCircle className="text-primary" />
                   <span className="ms-2 text-muted">
+                    {" "}
                     Liez votre compte LinkedIn facilement
                   </span>
                 </div>
@@ -387,7 +393,6 @@ export default function Home() {
                       <Image
                         src={e.illustration}
                         width={200}
-                        alt="illustration"
                         className="img-fluid"
                       />
                     </div>
@@ -410,7 +415,7 @@ export default function Home() {
         </div>
         <div className="row align-items-center">
           <div className="col-md-4 p-md-5 d-none d-md-block">
-            <Image src={Contact} className="img-fluid" alt="image" />
+            <Image src={Contact} className="img-fluid" />
           </div>
           <div className="col-md-8 pt-5 ps-lg-5">
             <Form />

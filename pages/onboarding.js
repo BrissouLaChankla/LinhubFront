@@ -3,6 +3,7 @@ import styles from "@/styles/onboarding.module.scss";
 import Image from "next/image";
 import noImage from "../public/no_image.jpeg";
 import Scooter from "@/public/illustrations/scooter.svg";
+
 import { ChevronRight } from "react-bootstrap-icons";
 
 export default function Onboarding() {
