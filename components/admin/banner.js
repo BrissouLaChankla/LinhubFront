@@ -1,10 +1,31 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import React from "react";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
 
+const BACKEND_ADDRESS = "http://localhost:3000";
 function Banner() {
-  const percentage = 75;
+  const user = useSelector((state) => state.user.value);
+  console.log(user);
+  const bannerInfo = useQuery({
+    queryKey: ["bannerInfos"],
+    queryFn: async () => {
+      const data = await fetch(
+        `${BACKEND_ADDRESS}/users/completion/${user.token}`
+      );
+      const res = data.json();
+      return res;
+    },
+  });
 
+  if (bannerInfo.isLoading) return "Chargement...";
+  if (bannerInfo.isError) return "Erreur";
+  const percentage = bannerInfo.data.percent;
+
+  const missingProfile = bannerInfo.data.noComplete.map((e, i) => (
+    <p key={i}>-{e}</p>
+  ));
   return (
     <div
       className="container alert alert-secondary alert-dismissible fade show"
@@ -37,8 +58,16 @@ function Banner() {
           ></CircularProgressbar>
         </div>
         <div className="col-10 col-md-11">
-          Welcome back <strong>John Doe</strong> ! Tu as complété {percentage}%
-          de ton profil.
+          <span>
+            Welcome back<span> </span>
+            <strong>
+              {bannerInfo.data.firstname}-{bannerInfo.data.lastname}
+            </strong>
+            ! Tu as complété {percentage}% de ton profil.{" "}
+            <p>
+              tu n'as pas complété le/les champ(s) suivant(s): {missingProfile}
+            </p>
+          </span>
           <button
             type="button"
             className="btn-close"
