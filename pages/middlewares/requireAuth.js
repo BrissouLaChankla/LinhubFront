@@ -1,15 +1,15 @@
-import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const requireAuth = (WrappedComponent) => {
   const AuthWrapper = (props) => {
     const router = useRouter();
 
     const isAuthenticated = useSelector((state) => state.user.value.token);
-    
+
     if (!isAuthenticated) {
       // Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion
-      router.push('/login');
+      router.push("/login");
       return null;
     }
 
