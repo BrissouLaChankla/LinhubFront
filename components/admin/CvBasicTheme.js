@@ -6,7 +6,7 @@ import styles from "@/styles/cv.module.scss"
 import Image from "next/image";
 import { Balloon, Briefcase, Linkedin, Mailbox, Phone, Pin, Quote } from "react-bootstrap-icons";
 
-const BACKEND_ADDRESS = "http://localhost:3000";
+const BACKEND_ADDRESS = "https://linhub-back.vercel.app";
 
 export default function CvBasicTheme() {
   const ref = useRef();

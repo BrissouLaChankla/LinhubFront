@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 
-const BACKEND_ADDRESS = "http://localhost:3000";
+const BACKEND_ADDRESS = "https://linhub-back.vercel.app";
 
 export default function Experience() {
   const queryClient = useQueryClient();
@@ -16,7 +16,7 @@ export default function Experience() {
     queryKey: ["experiences"],
     queryFn: async () => {
       const ExperienceData = await fetch(
-        "http://localhost:3000/experiences/" + user.token
+        "https://linhub-back.vercel.app/experiences/" + user.token
       );
       const res = ExperienceData.json();
       console.log(res);

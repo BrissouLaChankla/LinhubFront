@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-const BACKEND_ADDRESS = "http://localhost:3000";
+const BACKEND_ADDRESS = "https://linhub-back.vercel.app";
 
 export default function FormationFormUpdate({ id }) {
   const user = useSelector((state) => state.user.value);
@@ -26,7 +26,7 @@ export default function FormationFormUpdate({ id }) {
       description: "",
       result: "",
     });
-    fetch("http://localhost:3000/education/" + id + "/" + user.token)
+    fetch("https://linhub-back.vercel.app/education/" + id + "/" + user.token)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

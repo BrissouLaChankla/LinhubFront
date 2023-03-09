@@ -4,7 +4,7 @@ import React from "react";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 
-const BACKEND_ADDRESS = "http://localhost:3000";
+const BACKEND_ADDRESS = "https://linhub-back.vercel.app";
 function Banner() {
   const user = useSelector((state) => state.user.value);
   console.log(user);

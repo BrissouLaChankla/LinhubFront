@@ -41,7 +41,7 @@ export default function GeneralInfos() {
   const { isLoading, error, isSuccess, data } = useQuery({
     queryKey: ["generalInfos"],
     queryFn: () =>
-      fetch("http://localhost:3000/generalInfo/" + user.token).then((res) =>
+      fetch("https://linhub-back.vercel.app/generalInfo/" + user.token).then((res) =>
         res.json()
       ),
   });
@@ -90,7 +90,7 @@ export default function GeneralInfos() {
     formData.append("bannerPicture", bannerField.current.files[0]);
     formData.append("data", JSON.stringify(data));
 
-    fetch("http://localhost:3000/generalInfo/update/" + user.token, {
+    fetch("https://linhub-back.vercel.app/generalInfo/update/" + user.token, {
       method: "POST",
       body: formData,
     })

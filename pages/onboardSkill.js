@@ -32,7 +32,7 @@ export default function OnboardSkill() {
       const body = selectedSkills.map((e) => (e = e.name));
       console.log(body);
       const data = await fetch(
-        "http://localhost:3000/skills/initiate/" + user.token,
+        "https://linhub-back.vercel.app/skills/initiate/" + user.token,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

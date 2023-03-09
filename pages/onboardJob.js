@@ -34,7 +34,7 @@ export default function Onboarding() {
   const updateMutation = useMutation({
     mutationFn: async () => {
       const data = await fetch(
-        "http://localhost:3000/generalInfo/setup/" + user.value.token,
+        "https://linhub-back.vercel.app/generalInfo/setup/" + user.value.token,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
