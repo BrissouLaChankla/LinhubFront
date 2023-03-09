@@ -1,0 +1,48 @@
+.sidebar {
+    background-color: white;
+    position: relative;
+    height: 100%;
+    width: 320px;
+
+    h5 {
+        font-size: 1.7rem;
+        margin-top:20px;
+    }
+}
+
+.contact {
+    margin-top:70px;
+    margin-left:15px;
+    height: 250px;
+    width: 300px;
+    border-left: 2px solid var(--primary);
+}
+
+
+.languages {
+    margin-top:70px;
+    margin-left:15px;
+    height: 200px;
+    width: 250px;
+    border-left: 2px solid var(--primary);
+}
+
+
+.rightSection {
+    position: absolute;
+    top: 0;
+    width: 790px;
+    left: 305px;
+}
+
+.borderSep {
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 10px;
+}
+
+.firstQuote {
+    position:absolute;
+    top: -50px;
+    left: -10px;
+    font-size: 50px;
+}
