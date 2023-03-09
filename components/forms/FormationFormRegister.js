@@ -1,6 +1,6 @@
 import { useState, useRef, use, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function FormationFormUpdate({ closeModal }) {
@@ -27,15 +27,29 @@ export default function FormationFormUpdate({ closeModal }) {
   };
 
   const addMutation = useMutation({
-    mutationFn: () => {
-      fetch(`${BACKEND_ADDRESS}/education/create/${user.token}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+    mutationFn: async () => {
+      const data = await fetch(
+        `${BACKEND_ADDRESS}/education/create/${user.token}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }
+      );
+      return data; //le onSuccess attend un return pour pouvoir etre enclenché et donc refresh automatiquement
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["formations"] });
+      setForm({
+        schoolName: "",
+        degreeName: "",
+        fieldOfStudyName: "",
+        startDate: "",
+        endDate: "",
+        description: "",
+        result: "",
       });
     },
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
   });
 
   return (
@@ -45,7 +59,7 @@ export default function FormationFormUpdate({ closeModal }) {
         addMutation.mutate();
       }}
     >
-      <div>
+      <div className="mx-3 my-3">
         <div className="mb-3">
           <label htmlFor="formation_name" className="form-label">
             Nom de la formation
@@ -130,6 +144,7 @@ export default function FormationFormUpdate({ closeModal }) {
           <input
             type="text"
             className="form-control"
+            value={form.result}
             id="result"
             name="result"
             onChange={(e) => {
@@ -152,7 +167,7 @@ export default function FormationFormUpdate({ closeModal }) {
             }}
           />
         </div>
-        <div>
+        <div className="d-flex justify-content-between mt-5">
           <button
             type="button"
             className="btn btn-secondary"

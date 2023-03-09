@@ -1,25 +1,73 @@
 import Link from "next/link";
-import { PersonCircle, FileEarmarkPerson } from "react-bootstrap-icons";
+import {
+  PersonCircle,
+  FileEarmarkPerson,
+  MortarboardFill,
+  BriefcaseFill,
+  GearFill,
+  Gear,
+  Briefcase,
+  Mortarboard,
+  FileEarmarkPersonFill,
+  Lightning,
+  LightningFill,
+} from "react-bootstrap-icons";
 import { logout } from "../../reducers/user";
 import { useDispatch } from "react-redux";
-import { useRouter } from "next/router";
+import logo from "@/public/logos/logo.png";
+import Image from "next/image";
+import { useState } from "react";
 
 function AdminNavbar() {
   const dispatch = useDispatch();
-  const router = useRouter();
 
-  const handleLogout = () => {
-    router.push("/");
-    dispatch(logout());
-  };
+  const [currentLink, setCurrentLink] = useState("");
+
+  const links = [
+    {
+      name: "Info. Générales",
+      slug: "general",
+      icon: <FileEarmarkPerson className="fs-2" />,
+      iconFill: <FileEarmarkPersonFill className="fs-2 text-primary" />,
+    },
+    {
+      name: "Formations",
+      slug: "formations",
+      icon: <Mortarboard className="fs-2" />,
+      iconFill: <MortarboardFill className="fs-2 text-primary" />,
+    },
+    {
+      name: "Expériences Pro.",
+      slug: "experiences",
+      icon: <Briefcase className="fs-2 " />,
+      iconFill: <BriefcaseFill className="fs-2 text-primary" />,
+    },
+    {
+      name: "Projets",
+      slug: "projets",
+      icon: <Lightning className="fs-2" />,
+      iconFill: <LightningFill className="fs-2 text-primary" />,
+    },
+    {
+      name: "API & Portfolio",
+      slug: "api-portfolio",
+      icon: <Gear className="fs-2" />,
+      iconFill: <GearFill className="fs-2 text-primary" />,
+    },
+  ];
+
   return (
     <nav
-      className="navbar navbar-expand-lg bg-body border-bottom z-3"
+      className="navbar navbar-expand-lg bg-body shadow-sm z-3 bg-white position-fixed w-100"
       data-bs-theme="light"
     >
       <div className="container">
-        <Link className="nav-link active" href="/">
-          Linhub
+        <Link
+          href="/admin"
+          className="navbar-brand"
+          onClick={() => setCurrentLink("")}
+        >
+          <Image height={30} alt="logo" src={logo}></Image>
         </Link>
         <div className="d-flex align-items-center order-lg-3 ">
           <button
@@ -40,21 +88,21 @@ function AdminNavbar() {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <PersonCircle className="fs-4" />
+              <PersonCircle className="fs-2" />
             </a>
             <ul className="dropdown-menu dropdown-menu-end text-small">
               <li>
-                <Link className="dropdown-item" href="#">
-                  New project...
+                <Link className="dropdown-item disabled" href="#">
+                  Nouveau projet
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" href="#">
-                  Settings
+                <Link className="dropdown-item disabled" href="#">
+                  Configuration
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" href="#">
+                <Link className="dropdown-item disabled" href="#">
                   Profile
                 </Link>
               </li>
@@ -65,7 +113,7 @@ function AdminNavbar() {
                 <Link
                   className="dropdown-item"
                   href="#"
-                  onClick={() => handleLogout()}
+                  onClick={() => dispatch(logout())}
                 >
                   Déconnexion
                 </Link>
@@ -78,33 +126,17 @@ function AdminNavbar() {
           id="navbarNavAltMarkup"
         >
           <div className="navbar-nav d-flex align-items-center">
-            <Link
-              className="nav-link d-flex align-items-center gap-2"
-              href="/admin/general"
-            >
-              <FileEarmarkPerson />
-              Info. Générales
-            </Link>
-            <span className="d-none d-lg-inline">|</span>
-            <Link className="nav-link" href="/admin">
-              Dashboard
-            </Link>
-            <span className="d-none d-lg-inline">|</span>
-            <Link className="nav-link" href="/admin/formation">
-              Formations
-            </Link>
-            <span className="d-none d-lg-inline">|</span>
-            <Link className="nav-link" href="/admin">
-              Expériences pro
-            </Link>
-            <span className="d-none d-lg-inline">|</span>
-            <Link className="nav-link" href="/admin">
-              Projets
-            </Link>
-            <span className="d-none d-lg-inline">|</span>
-            <Link className="nav-link" href="/admin">
-              API & Portofolio
-            </Link>
+            {links.map((e, i) => (
+              <Link
+                key={i}
+                className="nav-link d-flex flex-column align-items-center gap-1 pe-3"
+                href={"/admin/" + e.slug}
+                onClick={() => setCurrentLink(e.name)}
+              >
+                {e.name === currentLink ? e.iconFill : e.icon}
+                {e.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

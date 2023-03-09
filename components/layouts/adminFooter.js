@@ -2,7 +2,7 @@ import { Facebook, Twitter, Linkedin } from 'react-bootstrap-icons';
 
 function AdminFooter() {
     return (
-        <div className="border-top">
+        <div className="border-top mt-5">
             <footer className="container d-flex flex-wrap justify-content-between align-items-center py-3">
                 <div className="col-md-4 d-flex align-items-center">
                     <a href="/" className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">

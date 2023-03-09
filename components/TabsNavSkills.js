@@ -96,7 +96,6 @@ import {
 import { useState } from "react";
 export default function TabsNavSkills(props) {
   const [currentTab, setCurrentTab] = useState("1");
-  console.log(currentTab);
 
   const allSkills = [
     {

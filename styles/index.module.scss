@@ -2,3 +2,26 @@
 //   width: 100vw;
 //   height: 25vh;
 // }
+
+.deletable {
+    transition: all .3s ease;
+    cursor: pointer;
+    &:hover {
+        color: transparent!important;
+        background-color: red!important;
+        .deleteIcon {
+            opacity: 1;
+        }
+    
+    }
+}
+.deleteIcon {
+    transition: all .3s ease;
+    position: absolute;
+    font-size: 1.2rem;
+    color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}

@@ -1,24 +1,11 @@
-import { useState, useRef, use, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 const BACKEND_ADDRESS = "http://localhost:3000";
 
 export default function FormationFormUpdate({ id }) {
   const user = useSelector((state) => state.user.value);
-
   const queryClient = useQueryClient();
-
-  // const { isLoading, error, data } = useQuery({
-  //   queryKey: ["generalInfo"],
-  //   queryFn: () =>
-  //     fetch("http://localhost:3000/education/" + id + "/" + user.token).then(
-  //       (res) => res.json()
-  //     ),
-  // });
-
-  // if (isLoading) return "Chargement...";
-  // if (error) return "Aïe, il y a eu un pb: " + error.message;
-
   const [form, setForm] = useState({
     schoolName: "",
     degreeName: "",
@@ -30,6 +17,15 @@ export default function FormationFormUpdate({ id }) {
   });
 
   useEffect(() => {
+    setForm({
+      schoolName: "",
+      degreeName: "",
+      fieldOfStudyName: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+      result: "",
+    });
     fetch("http://localhost:3000/education/" + id + "/" + user.token)
       .then((res) => res.json())
       .then((data) => {
@@ -69,15 +65,20 @@ export default function FormationFormUpdate({ id }) {
   };
 
   const updateMutation = useMutation({
-    mutationFn: () => {
-      fetch(`${BACKEND_ADDRESS}/education/${id}/${user.token}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    mutationFn: async () => {
+      const data = await fetch(
+        `${BACKEND_ADDRESS}/education/${id}/${user.token}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }
+      );
+      return data;
     },
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["generalInfos"] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["formations"] });
+    },
   });
 
   return (
@@ -87,7 +88,7 @@ export default function FormationFormUpdate({ id }) {
         updateMutation.mutate();
       }}
     >
-      <div>
+      <div className="mx-3 my-3">
         <div className="mb-3">
           <label htmlFor="formation_name" className="form-label">
             Nom de la formation
@@ -172,6 +173,7 @@ export default function FormationFormUpdate({ id }) {
           <input
             type="text"
             className="form-control"
+            value={form.result}
             id="result"
             name="result"
             onChange={(e) => {
@@ -194,7 +196,7 @@ export default function FormationFormUpdate({ id }) {
             }}
           />
         </div>
-        <div>
+        <div className="mt-5 d-flex justify-content-between">
           <button
             type="button"
             className="btn btn-secondary"
