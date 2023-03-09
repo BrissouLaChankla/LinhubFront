@@ -6,7 +6,7 @@ import Hero from "@/public/illustrations/hero.svg"
 import LaptopBear from "@/public/illustrations/laptop_bear.svg"
 import DashboardScreen from "@/public/illustrations/screenshots/dashboard_example.jpg"
 import Image from "next/image"
-import { Activity, ArrowRepeat, ArrowRightShort, CheckCircle, Share, ShieldCheck, Stars, Stopwatch } from "react-bootstrap-icons"
+import { Activity, ArrowRepeat, ArrowRightShort, ChatSquare, ChatSquareHeart, CheckCircle, Magic, Share, ShieldCheck, Stars, Stopwatch } from "react-bootstrap-icons"
 import styles from "@/styles/landing.module.scss"
 import BasicIllu from "@/public/illustrations/pricing/basic.png"
 import StandardIllu from "@/public/illustrations/pricing/standard.png"
@@ -28,8 +28,8 @@ const advantages = [
     text: "Plus la peine de maintenir à jour votre portfolio, votre LinkedIn etc..."
   },
   {
-    icon: <Share className={styles.iconCircle} />,
-    title: "Synchronisation",
+    icon: <Magic className={styles.iconCircle} />,
+    title: "Simplicité",
     text: "Connectez votre compte LinkedIn à Linhub facilement et laissez la magie opérer"
   },
   {
@@ -39,23 +39,13 @@ const advantages = [
   },
   {
     icon: <Stars className={styles.iconCircle} />,
-    title: "Bien pensé",
+    title: "Design",
     text: "Nos modèles de portfolio, de CV ou même de signatures sont pensés UX/UI"
   },
   {
-    icon: <Activity className={styles.iconCircle} />,
-    title: "Task Comments",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-  },
-  {
-    icon: <Activity className={styles.iconCircle} />,
+    icon: <ChatSquareHeart className={styles.iconCircle} />,
     title: "Support 24/7",
-    text: "L'équipe Linhub se tient à votre disposition pour une quelconque requête."
-  },
-  {
-    icon: <Activity className={styles.iconCircle} />,
-    title: "Task Comments",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    text: "L'équipe Linhub se tient à votre disposition pour vous"
   },
 
 ];
@@ -166,29 +156,29 @@ const pricings = [
 
 const faqs = [
   {
-    title: "A qui s'adresse Linhub ?",
-    body: "This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance",
+    title: "Est-ce que Linhub garantit la sécurité et la confidentialité de mes données personnelles ?",
+    body: "Oui, Linhub garantit la sécurité et la confidentialité de vos données personnelles. Vos informations sont stockées de manière sécurisée et ne sont accessibles que par vous-même. Linhub ne partage pas vos informations avec des tiers sans votre consentement.",
     illustration: Hero
   },
   {
-    title: "A qui s'adresse Linhub ?",
-    body: "This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance",
+    title: "Comment puis-je connecter mon compte LinkedIn à Linhub ?",
+    body: "Pour connecter votre compte LinkedIn à Linhub, il vous suffit de créer un compte Linhub et de suivre les instructions de synchronisation. Une fois que vous aurez autorisé Linhub à accéder à votre compte LinkedIn, vos informations seront automatiquement synchronisées.",
     illustration: Hero
   },
   {
-    title: "A qui s'adresse Linhub ?",
-    body: "This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance",
+    title: "Est-ce que je peux personnaliser les modèles de portfolio, de CV et de signature proposés par Linhub ?",
+    body: "Oui, vous pouvez personnaliser les modèles de portfolio, de CV et de signature proposés par Linhub. Vous pouvez modifier les couleurs, les polices, les images et les textes pour personnaliser votre présentation.",
     illustration: Hero
   },
   {
-    title: "A qui s'adresse Linhub ?",
-    body: "This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance",
+    title: "Que se passe-t-il si j'ai des incohérences ou des erreurs entre mes différentes plateformes professionnelles ?",
+    body: "Linhub surveille et met à jour automatiquement toutes vos plateformes professionnelles pour éviter les incohérences ou les erreurs. Si des incohérences sont détectées, Linhub vous avertira et vous proposera des solutions pour corriger les problèmes.",
     illustration: Hero
   },
 ]
 
 const advantagesComp = advantages.map((e, i) => (
-  <div className="col-md-3" key={i}>
+  <div className="col-md-4" key={i}>
     <div className="text-center my-4">
       {e.icon}
       <h3 className="mt-3">{e.title}</h3>
