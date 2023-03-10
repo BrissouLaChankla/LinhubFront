@@ -44,7 +44,7 @@ import vuejs from "../public/logos/Frontend/vuejs.svg";
 import webpack from "../public/logos/Frontend/webpack.svg";
 import wxwidgets from "../public/logos/Frontend/WxWidgets.svg";
 // DevOps
-import amazonwebservice from "../public/logos/DevOps/amazonwebservices.svg";
+import amazonwebservice from "../public/logos/DevOps/amazonwebservice.svg";
 import bash from "../public/logos/DevOps/bash.svg";
 import circleci from "../public/logos/DevOps/circleci.svg";
 import docker from "../public/logos/DevOps/docker.svg";
